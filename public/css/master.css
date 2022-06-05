@@ -1,0 +1,213 @@
+@font-face {
+    font-family: coffee-extra;
+    src: url('../font/coffee-extra.ttf');
+}
+
+.navbar-landing-header .logo
+{
+    color: #fff;
+    font-size: 23px;
+    position: relative;
+}
+
+
+
+.navbar-landing-header .logo:before
+{
+    content: "";
+    position: absolute;
+    width: 45px;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    top: -15%;
+    left: -40%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
+     -3px -3px 4px rgba(255, 255, 255, 0.18);
+}
+
+.navbar-landing-header .logomail
+{
+    color: #fff;
+    font-size: 23px;
+    position: relative;
+    cursor: pointer;
+}
+
+.navbar-landing-header .logomail:before
+{
+    content: "";
+    position: absolute;
+    width: 45px;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    top: -15%;
+    left: -46%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
+     -3px -3px 4px rgba(255, 255, 255, 0.18);
+}
+
+.navbar-landing-header .logomail:hover:before
+{
+
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+                inset -3px -3px 4px rgba(255, 255, 255, 0.18);
+}
+
+.navbar-landing-header .logo:hover:before
+{
+
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+                inset -3px -3px 4px rgba(255, 255, 255, 0.18);
+}
+
+.magicline{
+    position: relative;
+}
+
+.magicline::after{
+    position: absolute;
+    top:30px;
+    left:0;
+    content:"";
+    width: 100%;
+    height: 1px;
+    background: white;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.2s ease-in;
+}
+
+.magicline:hover:after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.navlinks a{
+    color:rgb(238, 238, 238);
+    text-decoration: none;
+    font-family: coffee-extra;
+    font-size: 20px;
+    font-weight: 100;
+    font-family:'Poppins', sans-serif;
+    transform: scale(1);
+    transition: all 0.1s ease-in;
+    position: relative;
+}
+
+
+.navlinks a:hover{
+    color:rgb(0, 1, 85);
+    transform: scale(1.05);
+}
+
+.navlogin{
+    margin-left:auto;
+}
+
+.navlogin .btn{
+    font-family: 'Indie Flower', cursive;
+    font-size:27px;
+    font-weight: 100;
+
+    border-radius: 8px;
+    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
+           -3px -3px 3px rgba(255, 255, 255, 0.089);
+}
+
+.navlogin .btn:hover{
+    border-radius: 8px;
+    box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.205),
+            -1px -1px 3px rgba(255, 255, 255, 0.568),
+            inset 2px 2px 3px rgba(0, 0, 0, 0.205),
+           inset -3px -3px 3px rgba(255, 255, 255, 0.089);
+}
+
+
+.navlogin .loginbtn{
+    background-color: rgb(124, 229, 255,0.3);
+    color: #333;
+}
+
+.navlogin .signupbtn{
+    background-color: #fde672e6;
+    color: #333;
+}
+
+.content #website-title{
+    font-family: coffee-extra;
+    font-size: 80px;
+    font-weight: 100;
+    cursor: pointer;
+    text-shadow: 0 0 5px #fff;
+}
+
+.glow:hover {
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    
+    animation: glow 0.4s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+        text-shadow: 0 0 5px #fff;
+    }
+    
+    to {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fde672e6;
+    }
+  }
+
+.content{
+    padding-right: 100px;
+}
+
+
+
+.main-landing .content p{
+    font-size: medium;
+}
+
+.main-landing .image{
+    flex: 0 1 auto;
+    align-self: stretch;
+}
+
+.main-landing .image img{
+    margin-left: 0;
+    margin-right: 0;
+    width: 150%;
+    min-width:350px;
+    max-width:450px;
+    padding:30px;
+}
+
+.caption{
+    padding:20px;
+}
+
+.transparentback{
+    background: transparent;
+}
+
+.neuromorph{
+    border:0;
+    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
+           -3px -3px 3px rgba(255, 255, 255, 0.089);
+}
+
+.neurobtn{
+    background-color: rgba(255, 255, 255, 0.4);
+
+    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
+           -3px -3px 3px rgba(255, 255, 255, 0.089);
+}
+
+.neurobtn:hover{
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
+           -3px -3px 3px rgba(255, 255, 255, 0.089),
+           inset 3px 3px 3px rgba(0, 0, 0, 0.205),
+           inset -3px -3px 3px rgba(255, 255, 255, 0.089);
+}

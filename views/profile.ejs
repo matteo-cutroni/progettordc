@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Jobify - Home</title>
+    <%- include('./components/meta') %>
+</head>
+<body>  
+<section>
+    <div class="container-landing">
+
+      <div class="caption d-flex justify-content-center">
+          <% include('../public/js/my') %>
+          <%- include('./components/header') %>
+
+          <div class="main-landing d-flex  flex-column-reverse flex-lg-row col-12 justify-content-center align-items-center py-lg-5">
+            <div class="container align-items-center">
+                <div class="main-body">
+                      <!-- /Breadcrumb -->
+                
+                      <div class="row gutters-sm">
+                        <div class="transparentback col-md-4 mb-3">
+                          <div class="card transparentback" style="border:0;">
+                            <div class="card-body transparentback">
+                              <div class="d-flex flex-column align-items-center text-center transparentback ">
+                                <img src="<%=withoutLast3(user.picture)%>s240-c" alt="Foto profilo" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                  
+                                  <h4 style="color:white"><%=capitalize(user.name.givenName)%> <%=capitalize(user.name.familyName)%></h4>
+                                  <p class="text-secondary mb-1"><%=user.email%></p>
+                                  <!--
+                                    
+                                    <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                    <button class="btn btn-primary">Follow</button>
+
+                                    <button class="btn btn-outline-primary">Message</button>
+                                  -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                        </div>
+                        <div class="col-md-8 d-flex flex-column justify-content-center">
+                          <div class="card mb-3 transparentback neuromorph">
+                            <div id="profileInfo" class="card-body">
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Nome</h6>
+                                  <input type="text" id="nome" value="<%=user.name.givenName%> <%=user.name.familyName%>" class="d-none">
+                                </div>
+                                <div class="col-sm-9 text-white text-capitalize">
+                                    <%=user.name.givenName%> <%=user.name.familyName%>
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-white">
+                                    <%=user.email%>
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Ruolo</h6>
+                                </div>
+                                <div class="col-sm-9 text-white text-capitalize">
+                                  ---
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Azienda</h6>
+                                </div>
+                                <div class="col-sm-9 text-white text-capitalize">
+                                  ---
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <a class="btn neurobtn" href="javascript:void(0);" onclick="">Modifica</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+            
+                    </div>
+                </div>
+          </div>
+
+          <div class="footer-landing d-flex flex-col gap-5 justify-content-evenly  justify-content-md-start">
+            <div class="media">
+              <h2 style="color: #fde672;text-decoration: underline;">Matteo Papa</h2>
+                <div class="social">
+                  <div><a href=""><i class="fa fa-envelope"></i></a></div>
+                  <div><a href=""><i class="fab fa-github"></i></a></div>
+                </div>
+            </div>
+            <div class="media">
+              <h2 style="color: #fde672;text-decoration: underline;">Matteo Cutroni</h2>
+                <div class="social">
+                  <div><a href=""><i class="fa fa-envelope"></i></a></div>
+                  <div><a href=""><i class="fab fa-github"></i></a></div>
+                </div>
+            </div>
+          </div>
+
+      </div>
+
+    </div>
+</section>
+
+      
+<script src="js/jquery.js"></script>
+
+
+</body>
+</html>
