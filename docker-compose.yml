@@ -1,0 +1,63 @@
+
+version: '3.9'
+
+services:
+  nginx:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile
+    links:
+      - node1:node1
+      - node2:node2
+      - node3:node3
+    depends_on:
+      - node1
+      - node2
+      - node3
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
+
+  node1:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - INSTANCE=node1
+
+    networks:
+      - app-network
+
+  node2:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - INSTANCE=node2
+    networks:
+      - app-network
+  
+  node3:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - INSTANCE=node3
+
+    networks:
+      - app-network
+
+    
+networks:
+  app-network:
+    driver: bridge
