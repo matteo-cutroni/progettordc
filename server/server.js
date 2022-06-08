@@ -7,6 +7,8 @@ const session=require('express-session');
 const servicesRouter=require('./routes/servicesRouter');
 const profileRouter=require('./routes/profileRouter');
 const passport=require('passport');
+const { default: mongoose } = require('mongoose');
+const INSTANCE = process.env.INSTANCE;
 
 //REQUIRE DELLA GOOGLE STRATEGY
 require('./auth/auth');
@@ -77,4 +79,9 @@ app.get("/auth/logout", (req, res, next) => {
     });
 });
 
-app.listen(3000,()=>console.log('Listening on port 3000...'));
+mongoose
+    .connect('mongodb://mongo:27017/')
+    .then((result) => {
+        console.log(`${INSTANCE} -> ${result.connection.host}`);
+        app.listen(3000,()=>console.log('Listening on port 3000...'));
+    });
