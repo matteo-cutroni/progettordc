@@ -1,8 +1,9 @@
 const passport=require('passport');
 const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
-
 const GOOGLE_CLIENT_ID=process.env['GOOGLE_CLIENT_ID'];
 const GOOGLE_CLIENT_SECRET=process.env['GOOGLE_CLIENT_SECRET'];
+
+const Profile = require("../models/profile");
 
 passport.use(new GoogleStrategy({
     clientID:     GOOGLE_CLIENT_ID,
@@ -12,23 +13,40 @@ passport.use(new GoogleStrategy({
     passReqToCallback   : true
   },
   async function (request, accessToken, refreshToken, profile, done) {
-    const profileJson = profile._json;
+    console.log(profile);
     const userData = {
-      username: profileJson.email,
-      firstname: profileJson.given_name,
-      lastname: profileJson.family_name,
-      picture: profileJson.picture,
+      googleId: profile.id,
+      username: profile.email,
+      name: profile.given_name,
+      surname: profile.family_name,
+      picture: profile.picture,
       authType: 'oauth'
     }
-    console.log(profile);
-    return done(null, profile);
-  }
+    await Profile.findOne({googleId: userData.googleId})
+      .then(async (result) => {
+        if (!result) {
+          result = await Profile.create(userData);
+        }
+        return done(null, result);
+      })
+      .catch((err) => {
+        console.error(err.message)
+      });
+  }     
 ));
 
 passport.serializeUser(function(user,done){
     done(null,user);
 });
 
-passport.deserializeUser(function(user,done){
-    done(null,user);
+passport.deserializeUser(async (user, done) => {
+  await User.findOne({ googleId: user.googleId })
+    .then((result) => {
+      return done(null, result);
+    })
+    .catch((err) => {
+      console.error(err.message);
+    });
 });
+
+module.exports = passport;

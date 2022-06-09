@@ -80,7 +80,7 @@ app.get("/auth/logout", (req, res, next) => {
 });
 
 mongoose
-    .connect('mongodb://mongo:27017/')
+    .connect('mongodb://mongo:27017/new_db')
     .then((result) => {
         console.log(`${INSTANCE} -> ${result.connection.host}`);
         app.listen(3000,()=>console.log('Listening on port 3000...'));
