@@ -1,6 +1,11 @@
 const mongoose= require('mongoose');
 
 const profileSchema= new mongoose.Schema({
+    googleId:{
+        type: String,
+        required: true,
+        unique: true,
+    },
     name:{
         type: String,
         required:true

@@ -12,7 +12,8 @@ function isLoggedIn(req,res,next){
 }
 
 router.get('/',isLoggedIn,(req,res)=>{
-    res.render('./profile',{user:req.user});
+    console.log("\n\n session user = " + req.session.user);
+    res.render('./profile',{user: req.session.user});
 });
 
 

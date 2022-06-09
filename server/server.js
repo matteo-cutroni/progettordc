@@ -8,6 +8,7 @@ const servicesRouter=require('./routes/servicesRouter');
 const profileRouter=require('./routes/profileRouter');
 const passport=require('passport');
 const { default: mongoose } = require('mongoose');
+const MongoStore = require("connect-mongo");
 const INSTANCE = process.env.INSTANCE;
 
 //REQUIRE DELLA GOOGLE STRATEGY
@@ -17,10 +18,23 @@ function isLoggedIn(req,res,next){
     req.user ? next():res.redirect('/auth/google'); //UNATHORIZED STATUS
 }
 
+const SESSION_OPTIONS = {
+    cookie: {
+      /* cookie's lifetime: 4h */
+      maxAge: 1000 * 60 * 60 * 4,
+      secure: false,
+    },
+    resave: false,
+    saveUninitialized: true,
+    secret: "some_value",
+    store: MongoStore.create({ mongoUrl: 'mongodb://mongo:27017/new_db' }),
+  };
+  
+
 const app=express();
 
 //MIDDLEWARE for EXPRESS-SESSION
-app.use(session({secret:'cats'}));
+app.use(session(SESSION_OPTIONS));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -37,7 +51,7 @@ app.set('view engine','ejs');
 
 app.get('/',(req,res)=>{
     res.render('./index',{user: req.user});
-    console.log(req.user)
+    console.log("\n\nreq user = " +req.user)
 });
 
 

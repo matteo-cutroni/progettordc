@@ -13,7 +13,7 @@ passport.use(new GoogleStrategy({
     passReqToCallback   : true
   },
   async function (request, accessToken, refreshToken, profile, done) {
-    console.log(profile);
+    console.log("\n\nprofile= "+ profile);
     const userData = {
       googleId: profile.id,
       username: profile.email,
@@ -26,6 +26,8 @@ passport.use(new GoogleStrategy({
       .then(async (result) => {
         if (!result) {
           result = await Profile.create(userData);
+          console.log("\n\n nuovi dati in db\n\n");
+          console.log("\n\n result: " + result);
         }
         return done(null, result);
       })
@@ -36,12 +38,15 @@ passport.use(new GoogleStrategy({
 ));
 
 passport.serializeUser(function(user,done){
+    console.log("\n\n bbbbbbbbbbbbbbbbbbbb\n\n");
     done(null,user);
 });
 
 passport.deserializeUser(async (user, done) => {
-  await User.findOne({ googleId: user.googleId })
+  console.log("\n\nCCCCCCCCCCCCC\n\n");
+  await Profile.findOne({ googleId: user.googleId })
     .then((result) => {
+      console.log("\n\n aaaaaaaaa\n\n");
       return done(null, result);
     })
     .catch((err) => {
