@@ -6,6 +6,10 @@ const profileSchema= new mongoose.Schema({
         required: true,
         unique: true,
     },
+    mail:{
+        type: String,
+        required:true
+    },
     name:{
         type: String,
         required:true
@@ -20,6 +24,9 @@ const profileSchema= new mongoose.Schema({
     },
     ruolo:{
         type:String
+    },
+    picture:{
+        type: String
     }
 });
 

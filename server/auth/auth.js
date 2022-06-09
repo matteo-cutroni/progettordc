@@ -16,7 +16,7 @@ passport.use(new GoogleStrategy({
     console.log("\n\nprofile= "+ profile);
     const userData = {
       googleId: profile.id,
-      username: profile.email,
+      mail: profile.email,
       name: profile.given_name,
       surname: profile.family_name,
       picture: profile.picture,
