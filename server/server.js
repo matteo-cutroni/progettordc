@@ -6,9 +6,10 @@ const session=require('express-session');
 
 const servicesRouter=require('./routes/servicesRouter');
 const profileRouter=require('./routes/profileRouter');
+const apiRouter=require('./routes/apiRouter');
 const passport=require('passport');
 const { default: mongoose } = require('mongoose');
-const MongoStore = require("connect-mongo");
+const MongoStore = require('connect-mongo');
 const INSTANCE = process.env.INSTANCE;
 
 //REQUIRE DELLA GOOGLE STRATEGY
@@ -44,6 +45,7 @@ app.use(express.static(__dirname + '/public'));
 //ROUTES
 app.use('/services',servicesRouter);
 app.use('/profile',profileRouter);
+app.use('/api',apiRouter);
 
 //GETTING login URL
 //MIDDLE WARE CHE USA EJS

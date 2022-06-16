@@ -38,15 +38,12 @@ passport.use(new GoogleStrategy({
 ));
 
 passport.serializeUser(function(user,done){
-    console.log("\n\n bbbbbbbbbbbbbbbbbbbb\n\n");
     done(null,user);
 });
 
 passport.deserializeUser(async (user, done) => {
-  console.log("\n\nCCCCCCCCCCCCC\n\n");
   await Profile.findOne({ googleId: user.googleId })
     .then((result) => {
-      console.log("\n\n aaaaaaaaa\n\n");
       return done(null, result);
     })
     .catch((err) => {

@@ -25,6 +25,12 @@ const profileSchema= new mongoose.Schema({
     ruolo:{
         type:String
     },
+    azienda:{
+        type:String
+    },
+    curriculum:{
+        type:String
+    },
     picture:{
         type: String
     }
@@ -42,4 +48,4 @@ const profileSchema= new mongoose.Schema({
     next();
 });*/
 
-module.exports= mongoose.model('Profile',profileSchema);
+module.exports= mongoose.model('profile',profileSchema);

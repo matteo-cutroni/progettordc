@@ -11,11 +11,15 @@ function isLoggedIn(req,res,next){
     req.user ? next():res.redirect('/auth/google'); //UNATHORIZED STATUS
 }
 
-router.get('/',isLoggedIn,(req,res)=>{
+router.get('',isLoggedIn,(req,res)=>{
     console.log("\n\n session user = " + req.user);
     res.render('./profile',{user: req.user});
 });
 
+router.get('/edit',isLoggedIn,(req,res)=>{
+    console.log("\n\n session user = " + req.user);
+    res.render('./profileEdit',{user: req.user});
+});
 
 
 module.exports=router;

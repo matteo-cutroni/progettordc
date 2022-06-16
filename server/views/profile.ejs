@@ -68,7 +68,7 @@
                                   <h6 class="mb-0">Ruolo</h6>
                                 </div>
                                 <div class="col-sm-9 text-white text-capitalize">
-                                  ---
+                                  <%=user.ruolo%>
                                 </div>
                               </div>
                               <hr>
@@ -77,13 +77,24 @@
                                   <h6 class="mb-0">Azienda</h6>
                                 </div>
                                 <div class="col-sm-9 text-white text-capitalize">
-                                  ---
+                                  <%=user.azienda%>
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3 d-flex align-items-center">
+                                  <h6 class="mb-0">Curriculum</h6>
+                                </div>
+                                <div class="col-sm-9 text-capitalize">
+                                  <div class="px-1 navbar-landing-header">
+                                    <a class="logo-curriculum"><i class="fa-solid fa-sheet-plastic"></i></a>
+                                  </div>
                                 </div>
                               </div>
                               <hr>
                               <div class="row">
                                 <div class="col-sm-12">
-                                  <a class="btn neurobtn" href="javascript:void(0);" onclick="">Modifica</a>
+                                  <a class="btn neurobtn" href="/profile/edit">Modifica</a>
                                 </div>
                               </div>
                             </div>

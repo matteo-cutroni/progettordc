@@ -3,13 +3,16 @@
     src: url('../font/coffee-extra.ttf');
 }
 
+.navbar-landing-header a{
+    color:white;
+}
+
 .navbar-landing-header .logo
 {
     color: #fff;
     font-size: 23px;
     position: relative;
 }
-
 
 
 .navbar-landing-header .logo:before
@@ -25,7 +28,33 @@
      -3px -3px 4px rgba(255, 255, 255, 0.18);
 }
 
-.navbar-landing-header .logomail
+.navbar-landing-header .logo-curriculum:before
+{
+    content: "";
+    position: absolute;
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    top: -10%;
+    left: -65%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
+     -3px -3px 4px rgba(255, 255, 255, 0.18);
+}
+
+.navbar-landing-header .download-icon:before
+{
+    content: "";
+    position: absolute;
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    top: -10%;
+    left: -40%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
+     -3px -3px 4px rgba(255, 255, 255, 0.18);
+}
+
+.navbar-landing-header .logomail,.logo-curriculum,.download-icon
 {
     color: #fff;
     font-size: 23px;
@@ -46,9 +75,8 @@
      -3px -3px 4px rgba(255, 255, 255, 0.18);
 }
 
-.navbar-landing-header .logomail:hover:before
+.navbar-landing-header .logomail:hover:before,.logo-curriculum:hover:before,.download-icon:hover:before
 {
-
     box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
                 inset -3px -3px 4px rgba(255, 255, 255, 0.18);
 }
