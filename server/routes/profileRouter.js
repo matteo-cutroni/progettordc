@@ -39,22 +39,23 @@ function isLoggedIn(req,res,next){
 }
 
 router.get('',isLoggedIn,(req,res)=>{
-    console.log("\n\n session user = " + req.user);
     res.render('./profile',{user: req.user});
 });
 
 router.get('/edit',isLoggedIn,(req,res)=>{
-    console.log("\n\n session user = " + req.user);
     res.render('./profileEdit',{user: req.user});
 });
 
 //MODIFICA PROFILO
 
 //FUNZIONE PER UPLOAD SUL DRIVE
-const uploadFile= async (fileObject)=>{
+const uploadFile= async (fileObject,user)=>{
+    if (user.curriculumId){
+        await deleteFile(user.curriculumId);
+    }
     const bufferStream = new stream.PassThrough();
     bufferStream.end(fileObject.buffer);
-
+    console.log("\nCarico il file sul Drive...\n")
     try {
       const response = await drive.files.create({
         media: {
@@ -66,22 +67,70 @@ const uploadFile= async (fileObject)=>{
             mimeType: fileObject.mimeType,
         }
       });
-      return response;
+      console.log("\nCaricato ! Id del file:\n");
+      console.log(response.data.id);
+      return response.data.id;
     } catch (error) {
       console.log(error.message);
     }
 }
 
+//DELETE DRIVE FILE
+
+async function deleteFile(driveFileId) {
+    console.log("\nCancellando il curriculum pre-esistente... \n");
+    console.log("\nID del file da cancellare:");
+    console.log(driveFileId);
+    try {
+      const response = await drive.files.delete({
+        fileId: driveFileId,
+      });
+      console.log("\nFatto !\n");
+    } catch (error) {
+      console.log(error.message);
+    }
+}
+
+//GET PUBLIC LINK
+
+async function generatePublicUrl(driveFileId) {
+    try {
+      const fileId = driveFileId;
+      await drive.permissions.create({
+        fileId: fileId,
+        requestBody: {
+          role: 'reader',
+          type: 'anyone',
+        },
+      });
+  
+      /* 
+      webViewLink: View the file in browser
+      webContentLink: Direct download link 
+      */
+      const result = await drive.files.get({
+        fileId: fileId,
+        fields: 'webViewLink, webContentLink',
+      });
+      console.log("\nInformazioni sui link del file: \n")
+      console.log(result.data);
+      return result.data.webViewLink;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
 //MODIFICA PROFILO
 
 router.post("/set", upload.any(), async (req,res)=>{
     var query={'mail': req.user.mail};
-
     try{
         const { body, files } = req;
-
-        const response=await uploadFile(files[0]);
-        console.log(response.data);
+        let curriculumDataId,linkToCurriculum;
+        if (files[0]!=null){
+            curriculumDataId= await uploadFile(files[0],req.user);
+            linkToCurriculum= await generatePublicUrl(curriculumDataId);
+        }
         await profileModel.updateOne(query, {$set:{
                 //DATI BACK-END
                 name:req.user.name.givenName,
@@ -89,14 +138,18 @@ router.post("/set", upload.any(), async (req,res)=>{
                 mail:req.user.mail,
                 //DATI FRONT-END
                 ruolo: req.body.ruolo,
-                azienda:req.body.azienda}
+                azienda:req.body.azienda,
+                curriculumId: curriculumDataId,
+                curriculumLink: linkToCurriculum
+            }
         }, {upsert: true});
         
     } catch(f){
-        console.log("WHAT");
         console.log(f.message);
     }
+    console.log("Edited profile, redirecting...");
     res.redirect('/profile');
+    res.end();
 });    
 
 module.exports=router;

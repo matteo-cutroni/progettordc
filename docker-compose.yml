@@ -18,6 +18,8 @@ services:
       - "8080:80"
     networks:
       - app-network
+    logging:
+      driver: none
 
   node1:
     build:
@@ -63,13 +65,12 @@ services:
   
   mongo:
     image: mongo:latest
-    container_name: db
-    volumes: 
-      - /data/db:/data/db
     networks:
       - app-network
     ports:
       - '27017:27017'
+    logging:
+      driver: none
     
     
 

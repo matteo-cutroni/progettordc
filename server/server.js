@@ -53,7 +53,6 @@ app.set('view engine','ejs');
 
 app.get('/',(req,res)=>{
     res.render('./index',{user: req.user});
-    console.log("\n\nreq user = " +req.user)
 });
 
 
@@ -96,7 +95,7 @@ app.get("/auth/logout", (req, res, next) => {
 });
 
 mongoose
-    .connect('mongodb://mongo:27017/db')
+    .connect('mongodb://mongo:27017/new_db')
     .then((result) => {
         console.log(`${INSTANCE} -> ${result.connection.host}`);
         app.listen(3000,()=>console.log('Listening on port 3000...'));

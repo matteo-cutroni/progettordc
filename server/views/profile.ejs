@@ -22,7 +22,7 @@
                             <div class="card transparentback" style="border:0;">
                               <div class="card-body transparentback">
                                 <div class="d-flex flex-column align-items-center text-center transparentback ">
-                                  <img src="<%=user.picture%>" alt="Foto profilo" class="rounded-circle" width="150">
+                                  <img src="<%=withoutLast5(user.picture)%>s240-c" alt="Foto profilo" class="rounded-circle" width="150">
                                   <div class="mt-3">
                                     
                                     <h4 style="color:white"><%=capitalize(user.name)%> <%=capitalize(user.surname)%></h4>
@@ -86,7 +86,7 @@
                                   </div>
                                   <div class="col-sm-9 text-capitalize">
                                     <div class="px-1 navbar-landing-header">
-                                      <a class="logo-curriculum"><i class="fa-solid fa-sheet-plastic"></i></a>
+                                      <a class="logo-curriculum" href="<%= user.curriculumLink%>" target="_blank"><i class="fa-solid fa-sheet-plastic"></i></a>
                                     </div>
                                   </div>
                                 </div>

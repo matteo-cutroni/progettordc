@@ -10,6 +10,11 @@
     <div class="container-landing">
 
       <div class="caption d-flex justify-content-center">
+        <div id="loading" class="loading justify-content-center align-items-center">
+          <div class="spinner-border text-light" style="width: 5rem; height: 5rem" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
           <% include('../public/js/my') %>
           <%- include('./components/header') %>
 
@@ -97,13 +102,14 @@
                                   <div class="col-sm-9 text-white">
 
                                     <!--Upload Curriculum su Drive-->
-                                    <input class="d-none" type="file" id="curriculum" name="files" accept=".pdf,.doc" hidden multiple/>
+                                    <input class="d-none" type="file" id="curriculum" name="files" accept=".pdf,.doc" onChange="fileUploaded()" hidden multiple/>
                                     <div class="navbar-landing-header px-1" id="divcurriculum">
                                       <label for="curriculum">
                                         <a class="download-icon" style="fill:white"><i class="fa-solid fa-upload"></i></a>
-                                      </label>                                     
+                                      </label>
+                                      <span class="px-3 fileUploaded" style="color:greenyellow">File Selezionato   <i class="fa-solid fa-check"></i></span>                                 
                                     </div>
-
+                                    
                                   </div>
                                 </div>
                                 <hr>
@@ -150,13 +156,28 @@
       
 <script src="js/jquery.js"></script>
 <script>
+
+  function fileUploaded(){
+    $('.fileUploaded').show();
+  }
+
   const formElem = document.querySelector('form');
   formElem.addEventListener('submit', async (e) => {
+
+    $('#loading').css("display","flex");
     e.preventDefault();
-    await fetch('/profile/set', {
+    
+    fetch('/profile/set', {
       method: 'POST',
+      redirect: 'follow',
       body: new FormData(formElem),
-    });
+    }).then(response => {
+        // HTTP 301 response
+        // HOW CAN I FOLLOW THE HTTP REDIRECT RESPONSE?
+        if (response.redirected) {
+            window.location.href = response.url;
+        }
+    })
   });
 </script>
 

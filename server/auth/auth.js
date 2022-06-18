@@ -13,7 +13,7 @@ passport.use(new GoogleStrategy({
     passReqToCallback   : true
   },
   async function (request, accessToken, refreshToken, profile, done) {
-    console.log("\n\nprofile= "+ profile);
+    
     const userData = {
       googleId: profile.id,
       mail: profile.email,
@@ -22,12 +22,16 @@ passport.use(new GoogleStrategy({
       picture: profile.picture,
       authType: 'oauth'
     }
+    console.log("\n\nLogged User: \n"+ JSON.stringify((userData),null,4));
     await Profile.findOne({googleId: userData.googleId})
       .then(async (result) => {
         if (!result) {
           result = await Profile.create(userData);
-          console.log("\n\n nuovi dati in db\n\n");
-          console.log("\n\n result: " + result);
+          console.log("\nNuovi Dati caricati nel database\n");
+          console.log("\nRisultato: " + result);
+        }
+        else{
+          console.log("\nUtente già registrato nel database\n");
         }
         return done(null, result);
       })
