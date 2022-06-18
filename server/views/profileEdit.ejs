@@ -59,7 +59,7 @@
                                   <!---->
                               <!--FORM START -->
                                   <!---->
-                              <form method="POST" action="/api/profile">
+                              <form>
                                   
                                 <div class="row">
                                     <div class="col-sm-3">
@@ -95,14 +95,15 @@
                                     <h6 class="mb-0">Curriculum</h6>
                                   </div>
                                   <div class="col-sm-9 text-white">
-                                  <input class="d-none" type="file" id="curriculum" name="curriculum" accept=".pdf,.doc" hidden/>
+
+                                    <!--Upload Curriculum su Drive-->
+                                    <input class="d-none" type="file" id="curriculum" name="files" accept=".pdf,.doc" hidden multiple/>
                                     <div class="navbar-landing-header px-1" id="divcurriculum">
-                                      <!--Upload Curriculum su Drive-->
                                       <label for="curriculum">
                                         <a class="download-icon" style="fill:white"><i class="fa-solid fa-upload"></i></a>
-                                      </label>
-                                     
+                                      </label>                                     
                                     </div>
+
                                   </div>
                                 </div>
                                 <hr>
@@ -148,7 +149,16 @@
 
       
 <script src="js/jquery.js"></script>
-
+<script>
+  const formElem = document.querySelector('form');
+  formElem.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await fetch('/profile/set', {
+      method: 'POST',
+      body: new FormData(formElem),
+    });
+  });
+</script>
 
 </body>
 </html>

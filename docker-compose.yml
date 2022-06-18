@@ -1,6 +1,7 @@
 version: '3.9'
 
 services:
+
   nginx:
     build: 
       context: ./nginx
@@ -59,11 +60,18 @@ services:
       - mongo
     networks:
       - app-network
-
+  
   mongo:
-    image: mongo
+    image: mongo:latest
+    container_name: db
+    volumes: 
+      - /data/db:/data/db
     networks:
       - app-network
+    ports:
+      - '27017:27017'
+    
+    
 
 networks:
   app-network:

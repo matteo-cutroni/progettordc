@@ -6,7 +6,6 @@ const session=require('express-session');
 
 const servicesRouter=require('./routes/servicesRouter');
 const profileRouter=require('./routes/profileRouter');
-const apiRouter=require('./routes/apiRouter');
 const passport=require('passport');
 const { default: mongoose } = require('mongoose');
 const MongoStore = require('connect-mongo');
@@ -38,6 +37,8 @@ const app=express();
 app.use(session(SESSION_OPTIONS));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //SET STATIC FILES
 app.use(express.static(__dirname + '/public'));
@@ -45,7 +46,6 @@ app.use(express.static(__dirname + '/public'));
 //ROUTES
 app.use('/services',servicesRouter);
 app.use('/profile',profileRouter);
-app.use('/api',apiRouter);
 
 //GETTING login URL
 //MIDDLE WARE CHE USA EJS
@@ -96,7 +96,7 @@ app.get("/auth/logout", (req, res, next) => {
 });
 
 mongoose
-    .connect('mongodb://mongo:27017/new_db')
+    .connect('mongodb://mongo:27017/db')
     .then((result) => {
         console.log(`${INSTANCE} -> ${result.connection.host}`);
         app.listen(3000,()=>console.log('Listening on port 3000...'));

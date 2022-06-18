@@ -28,24 +28,15 @@ const profileSchema= new mongoose.Schema({
     azienda:{
         type:String
     },
-    curriculum:{
+    curriculumId:{
+        type:String
+    },
+    curriculumLink:{
         type:String
     },
     picture:{
         type: String
     }
 });
-
-//ATTIVATA OGNI VOLTA (PRIMA DELLA VALIDAZIONE)
-/*articleSchema.pre('validate',function(next){
-    if (this.title){
-        this.slug=slugify(this.title,{
-            lower:true, //lowercase
-            strict:true //forza lo slugify a levare tutti i caratteri che non possono andare nell'url
-        });
-    }
-
-    next();
-});*/
 
 module.exports= mongoose.model('profile',profileSchema);
