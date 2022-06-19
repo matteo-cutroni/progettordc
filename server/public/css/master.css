@@ -254,3 +254,15 @@
            inset 3px 3px 3px rgba(0, 0, 0, 0.205),
            inset -3px -3px 3px rgba(255, 255, 255, 0.089);
 }
+
+.form-wrapper{
+    width: 70%;
+}
+
+.title-section-wrapper a{
+    color: #fde672;
+    font-size: 18px;
+    text-decoration: none;
+    font-family:'Poppins', sans-serif;
+    margin: 26px 0px;
+}

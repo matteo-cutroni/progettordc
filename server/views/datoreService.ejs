@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Jobify - Annunci</title>
+    <%- include('./components/meta') %>
+</head>
+<body>  
+<section>
+    <div class="container-landing">
+
+      <div class="caption d-flex justify-content-center">
+      
+        <%- include('./components/header') %>
+
+        <div class="main-landing d-flex flex-column-reverse flex-lg-row justify-content-center align-items-center py-lg-3">
+            <div class="content">
+                <div>
+                    <h1 class="text-center"> 
+                        <a href="/">
+                        <span id="website-title" class="glow py-5 text-center">Crea il tuo annuncio !</span>
+                        </a>
+                    </h1>
+                </div>
+                <p class="py-3 text-center" style="font-size: 20px;">Cerchi dipendenti per un lavoro ? Compila il form sottostante e pubblica un annuncio</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center py-2">
+            <img src="img/workers.png" style="width: 30%;">
+        </div>
+        <div class="form-page d-flex justify-content-center">
+            <div class="form-wrapper">
+
+                <form id="annuncio-form" method="POST" action="/services/publish">
+                    <div class="form-group py-2">
+                        <label for="lavoro-proposto"><p class="text-white">Lavoro proposto</p> </label>
+                        <input type="text" class="form-control" id="lavoro-proposto" name="lavoroProposto" placeholder="Inserisci il lavoro da proporre...">
+                    </div>
+
+                    <div class="form-group py-2">
+                        <label for="requisiti"><p class="text-white">Requisiti</p> </label>
+                        <textarea name="requisiti" rows="6" form="annuncio-form" class="form-control" id="requisiti" name="requisiti" placeholder="Inserisci i requisiti richiesti..."></textarea>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn neurobtn my-3 text-center">Pubblica</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+          
+
+      </div>
+
+    </div>
+</section>
+
+      
+<script src="js/jquery.js"></script>
+
+
+</body>
+</html>

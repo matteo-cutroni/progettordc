@@ -272,8 +272,6 @@ top: -18px;
 
 .main-landing .content #website-title:hover
 {
-
-
     text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
     -webkit-background-clip: text;
     -moz-background-clip: text;
