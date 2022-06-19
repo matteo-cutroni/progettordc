@@ -14,7 +14,7 @@ function isLoggedIn(req,res,next){
     req.user ? next():res.redirect('/auth/google'); //UNATHORIZED STATUS
 }
 
-router.get('/',(req,res)=>{
+router.get('/', isLoggedIn, (req,res)=>{
     if (req.user.ruolo=="datore"){
         res.render("./datoreService",{user:req.user});
     }
@@ -22,7 +22,18 @@ router.get('/',(req,res)=>{
         res.send("lavoratore");
     }
     else{
+        // ... DA AGGIUNGERE CON GET L'AVVISO ALL'UTENTE ...
         res.redirect('/profile');
+    }
+});
+
+router.get('/miei-annunci', isLoggedIn, async(req,res)=>{
+    if (req.user.ruolo=="datore"){
+        const mieiAnnunci=await Annuncio.find({googleId: req.user.googleId});
+        res.render("./mieiAnnunci",{user:req.user, annunci:mieiAnnunci});
+    }
+    else{
+        res.redirect('/');
     }
 });
 
@@ -32,7 +43,7 @@ router.post('/publish' , isLoggedIn, async (req,res)=>{
     console.log("requisiti: " + req.body.requisiti)
 
     const annuncioData={
-        googleId: req.user.id,
+        googleId: req.user.googleId,
         azienda: req.user.azienda,
         picture: req.user.picture,
         lavoro: req.body.lavoroProposto,

@@ -10,24 +10,27 @@
     <div class="container-landing">
 
       <div class="caption d-flex justify-content-center">
-      
         <%- include('./components/header') %>
 
-        <div class="main-landing d-flex flex-column-reverse flex-lg-row justify-content-center align-items-center py-lg-3">
+        <div class="main-landing d-flex flex-column-reverse flex-lg-row justify-content-center align-items-center py-2">
             <div class="content">
-                <div>
-                    <h1 class="text-center"> 
+                <div class="py-0">
+                    <h1 class="text-center py-0"> 
                         <a href="/">
-                        <span id="website-title" class="glow py-5 text-center">Crea il tuo annuncio !</span>
+                        <span id="website-title" class="glow py-0 text-center">Crea il tuo annuncio !</span>
                         </a>
                     </h1>
+                </div>
+                <div class="d-flex justify-content-center py-0">
+                    <a href="/services/miei-annunci" class="text-center text-decoration-underline" style="font-size: 25px;">I tuoi annunci</a>
+                </div>
+                <div class="d-flex justify-content-center py-4">
+                    <img src="img/workers.png" style="width: 30%;">
                 </div>
                 <p class="py-3 text-center" style="font-size: 20px;">Cerchi dipendenti per un lavoro ? Compila il form sottostante e pubblica un annuncio</p>
             </div>
         </div>
-        <div class="d-flex justify-content-center py-2">
-            <img src="img/workers.png" style="width: 30%;">
-        </div>
+
         <div class="form-page d-flex justify-content-center">
             <div class="form-wrapper">
 
@@ -49,7 +52,6 @@
 
             </div>
         </div>
-          
 
       </div>
 
