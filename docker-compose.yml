@@ -16,6 +16,7 @@ services:
       - node3
     ports:
       - "8080:80"
+      - "8083:443"
     networks:
       - app-network
     logging:
