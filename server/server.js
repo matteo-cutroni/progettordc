@@ -74,7 +74,7 @@ app.get('/auth/google',
 //GOOGLE CALLBACK (ALLA FINE DELLA REGISTRAZIONE)
 app.get('/google/callback',
     passport.authenticate('google',{
-        successRedirect:'/',
+        successRedirect:'https://localhost:8083',
         failureRedirect: '/auth/failure'
     })
 );
