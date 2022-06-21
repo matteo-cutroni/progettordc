@@ -55,7 +55,6 @@ app.get('/',(req,res)=>{
     res.render('./index',{user: req.user});
 });
 
-
 app.get('/aboutus',(req,res)=>{
     res.render('./aboutus',{user: req.user});
 });

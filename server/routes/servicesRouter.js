@@ -14,12 +14,13 @@ function isLoggedIn(req,res,next){
     req.user ? next():res.redirect('/auth/google'); //UNATHORIZED STATUS
 }
 
-router.get('/', isLoggedIn, (req,res)=>{
+router.get('/', isLoggedIn, async (req,res)=>{
     if (req.user.ruolo=="datore"){
         res.render("./datoreService",{user:req.user});
     }
     else if (req.user.ruolo=="lavoratore"){
-        res.send("lavoratore");
+        const mieiAnnunci=await Annuncio.find({googleId: req.user.googleId});
+        res.render("./lavoratoreService",{user:req.user,annunci:mieiAnnunci});
     }
     else{
         // ... DA AGGIUNGERE CON GET L'AVVISO ALL'UTENTE ...
@@ -29,12 +30,22 @@ router.get('/', isLoggedIn, (req,res)=>{
 
 router.get('/miei-annunci', isLoggedIn, async(req,res)=>{
     if (req.user.ruolo=="datore"){
-        const mieiAnnunci=await Annuncio.find({googleId: req.user.googleId});
+        const mieiAnnunci=await Annuncio.find({});
         res.render("./mieiAnnunci",{user:req.user, annunci:mieiAnnunci});
     }
     else{
         res.redirect('/');
     }
+});
+
+router.post('/delete',isLoggedIn,async(req,res)=>{
+    const toDelete= await Annuncio.findOne({_id:req.body.id});
+    
+    if (toDelete.googleId==req.user.googleId){
+        console.log("CANCELLO ANNUNCIO: " + req.body.id);
+        await Annuncio.deleteOne({_id:req.body.id});
+    }
+    res.redirect('/services/miei-annunci');
 });
 
 router.post('/publish' , isLoggedIn, async (req,res)=>{
@@ -55,7 +66,7 @@ router.post('/publish' , isLoggedIn, async (req,res)=>{
     console.log("\nNuovo annuncio caricato nel database\n");
     console.log("\nRisultato: " + result);
 
-    res.redirect('/');
+    res.redirect('/services');
 });
 
 

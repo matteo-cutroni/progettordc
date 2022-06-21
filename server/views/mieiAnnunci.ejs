@@ -36,26 +36,19 @@
                                 <article class="post vt-post">
                                     <div class="row">
                                         <div class="d-flex flex-row align-items-center">
-                                            <div class="post-type post-img d-flex align-items-center">
+                                            <div class="post-type post-img d-flex flex-column align-items-start px-0">
                                                 <a href="#"><img src="<%= withoutLast5(user.picture)%>s240-c" class="img-responsive rounded-circle" style="width: 70%;" alt="image post"></a>
+                                                <br>
+                                                <h4 class="text-capitalize text-white text-center text-decoration-underline pt-4 px-4"><%=user.name%> <%=user.surname%></h4>
                                             </div>
-                                            <div class="author-info author-info-2">
-                                                <ul class="list-inline">
-                                                    <li>
-                                                        <div class="info">
-                                                            <h4 class="text-capitalize text-white text-decoration-underline"><%=user.name%> <%=user.surname%></h4>
-                                                            <br>
-                                                            <strong class="text-dark"><%=annuncio.date.toDateString()%></strong>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div >
                                             <div class="caption-post">
-                                                <h3 class="md-heading text-white">Lavoro Proposto: <%=annuncio.lavoro%></h3>
+                                                <strong class="text-dark"><%=annuncio.date.toDateString()%></strong>
+                                                <h3 class="md-heading text-white pt-4">Lavoro Proposto: <%=annuncio.lavoro%></h3>
                                                 <h6 class="text-white">Requisiti:</h6>
                                                 <p><%=annuncio.requisiti%></p>
+                                                <div class="d-flex gap-3">
+                                                    <a id="<%=annuncio._id%>" class="deletebtn btn" onClick="deleter('<%=annuncio._id%>')">Elimina <i style="font-size: large;" class="fa-solid fa-trash"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +68,26 @@
     
           
     <script src="js/jquery.js"></script>
-    
+    <script>
+        
+        function deleter(id){
+            console.log("Deleting ID: " + id);
+            const data={id:id};
+            
+            fetch('/services/delete', {
+                method: 'POST',
+                redirect: 'follow',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            }).then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                }
+            })
+        };
+      </script>
     
     </body>
 </html>

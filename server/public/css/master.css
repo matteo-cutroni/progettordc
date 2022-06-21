@@ -176,6 +176,49 @@
     color: #333;
 }
 
+.proposebtn{
+    font-family: 'Indie Flower', cursive;
+    font-size:27px;
+    font-weight: 100;
+    background-color: rgb(103, 255, 126) !important;
+    border-radius: 8px;
+    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
+           -3px -3px 3px rgba(255, 255, 255, 0.089);
+    
+    color: #333;
+}
+
+.deletebtn{
+    font-family: 'Indie Flower', cursive;
+    font-size:27px;
+    font-weight: 100;
+    background-color: rgb(255, 103, 103) !important;
+    border-radius: 8px;
+    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
+           -3px -3px 3px rgba(255, 255, 255, 0.089);
+    
+    color: #333;
+}
+
+.contactbtn{
+    font-family: 'Indie Flower', cursive;
+    font-size:27px;
+    font-weight: 100;
+
+    border-radius: 8px;
+    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
+           -3px -3px 3px rgba(255, 255, 255, 0.089);
+    background-color: rgb(221, 255, 0) !important;
+    color: #333;
+}
+
+.deletebtn:hover,.proposebtn:hover,.contactbtn:hover{
+    border-radius: 8px;
+    box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.205),
+            -1px -1px 3px rgba(255, 255, 255, 0.568),
+            inset 2px 2px 3px rgba(0, 0, 0, 0.205),
+           inset -3px -3px 3px rgba(255, 255, 255, 0.089);
+}
 .content #website-title{
     font-family: coffee-extra;
     font-size: 80px;
@@ -267,7 +310,7 @@
     margin: 26px 0px;
 }
 
-.singlearticle *{
+.singlearticle *:not(.btn){
     background: transparent !important;
 }
 
