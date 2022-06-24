@@ -19,7 +19,7 @@ router.get('/', isLoggedIn, async (req,res)=>{
         res.render("./datoreService",{user:req.user});
     }
     else if (req.user.ruolo=="lavoratore"){
-        const mieiAnnunci=await Annuncio.find({googleId: req.user.googleId});
+        const mieiAnnunci=await Annuncio.find({});
         res.render("./lavoratoreService",{user:req.user,annunci:mieiAnnunci});
     }
     else{
