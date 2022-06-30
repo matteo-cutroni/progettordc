@@ -1,7 +1,7 @@
 const mongoose= require('mongoose');
 
 const annuncioSchema= new mongoose.Schema({
-    googleId:{
+    mail:{
         type: String,
         required: true
     },

@@ -37,9 +37,9 @@
                         <div class="row">
                             <div class="d-flex flex-row align-items-center">
                                 <div class="post-type post-img d-flex flex-column align-items-start px-0">
-                                    <a href="#"><img src="<%= withoutLast5(user.picture)%>s240-c" class="img-responsive rounded-circle" style="width: 70%;" alt="image post"></a>
+                                    <a href="#"><img src="<%= withoutLast5(annuncio.picture)%>s240-c" class="img-responsive rounded-circle" style="width: 70%;" alt="image post"></a>
                                     <br>
-                                    <h4 class="text-capitalize text-white text-decoration-underline pt-4"><%=user.name%> <%=user.surname%></h4>
+                                    <h4 class=" text-white text-decoration-underline pt-4"><%=annuncio.azienda%></h4>
                                 </div>
                                 <div class="caption-post">
                                     <strong class="text-dark"><%=annuncio.date.toDateString()%></strong>
@@ -48,7 +48,10 @@
                                     <p><%=annuncio.requisiti%></p>
                                     <div class="d-flex gap-3">
                                         <a href="/profile" class="proposebtn btn">Proponiti <i style="font-size: large;" class="fa-solid fa-hand-point-up"></i></a>
-                                        <a href="/auth/logout" class="contactbtn btn">Contatta <i style="font-size: large;" class="fa-solid fa-message"></i></a>
+                                        <form method="post" action="/chat" class="inline">
+                                            <input type="hidden" name="mail" value="<%=annuncio.mail%>">
+                                            <button type="submit" class="contactbtn btn">Contatta <i style="font-size: large;" class="fa-solid fa-message"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

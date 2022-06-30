@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Jobify - All Chats</title>
+    <%- include('./components/meta') %>
+</head>
+<body>  
+<section>
+    <div class="container-landing">
+
+      <div class="caption d-flex justify-content-center">
+        <% include('../public/js/my') %>
+        <%- include('./components/header') %>
+
+        <div class="main-landing d-flex flex-column-reverse flex-lg-row justify-content-center align-items-center py-2">
+            <div class="content">
+                <div class="py-0">
+                    <h3 class="text-center py-0"> 
+                        <a>
+                        <span id="website-title" class="glow py-0 text-center">Chat</span>
+                        </a>
+                    </h3>
+                    <p class="py-3 text-center" style="font-size: 20px;">Qui trovi tutte le tue chat</p>
+                </div>
+            </div>
+        </div>
+
+      <% queue.forEach(function(chat){%>
+        <div class="caption-post d-flex justify-content-center col-12">
+            <div class="col-md-12 col-lg-12 d-flex justify-content-center">
+                <div class="singlearticle col-md-12 col-lg-12 d-flex justify-content-center">
+                    <article class="post vt-post">
+                        <div class="row">
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="caption-post">
+                                    <strong class="text-dark">Conversazione con</strong>
+                                    <% mailRicevente = chat.nome.replace(user.mail,'').replace(',','') %>
+                                    <h3 class="md-heading text-white pt-4"><%= mailRicevente%></h3>
+                                    <div class="d-flex gap-3">
+                                        <form method="post" action="/chat" class="inline">
+                                            <input type="hidden" name="mail" value="<%=mailRicevente%>">
+                                            <button type="submit" class="contactbtn btn">Scrivi <i style="font-size: large;" class="fa-solid fa-message"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    <%});%>
+
+    </div>
+</section>
+
+      
+<script src="js/jquery.js"></script>
+
+
+</body>
+</html>

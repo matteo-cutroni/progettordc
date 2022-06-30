@@ -41,7 +41,7 @@ router.get('/miei-annunci', isLoggedIn, async(req,res)=>{
 router.post('/delete',isLoggedIn,async(req,res)=>{
     const toDelete= await Annuncio.findOne({_id:req.body.id});
     
-    if (toDelete.googleId==req.user.googleId){
+    if (toDelete.mail==req.user.mail){
         console.log("CANCELLO ANNUNCIO: " + req.body.id);
         await Annuncio.deleteOne({_id:req.body.id});
     }
@@ -54,7 +54,7 @@ router.post('/publish' , isLoggedIn, async (req,res)=>{
     console.log("requisiti: " + req.body.requisiti)
 
     const annuncioData={
-        googleId: req.user.googleId,
+        mail: req.user.mail,
         azienda: req.user.azienda,
         picture: req.user.picture,
         lavoro: req.body.lavoroProposto,

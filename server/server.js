@@ -6,6 +6,8 @@ const session=require('express-session');
 
 const servicesRouter=require('./routes/servicesRouter');
 const profileRouter=require('./routes/profileRouter');
+const chatRouter=require('./routes/chatRouter');
+const allChatsRouter=require('./routes/allChatsRouter')
 const passport=require('passport');
 const { default: mongoose } = require('mongoose');
 const MongoStore = require('connect-mongo');
@@ -46,6 +48,8 @@ app.use(express.static(__dirname + '/public'));
 //ROUTES
 app.use('/services',servicesRouter);
 app.use('/profile',profileRouter);
+app.use('/chat',chatRouter);
+app.use('/allChats',allChatsRouter);
 
 //GETTING login URL
 //MIDDLE WARE CHE USA EJS
