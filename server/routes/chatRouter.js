@@ -7,6 +7,7 @@ const router=express.Router();
 router.use(express.static(__dirname + '/../public/'));
 
 const Queue = require("../models/queue");
+const Profile = require("../models/profile");
 
 const rabbitSettings = {
     protocol: 'amqp',
@@ -19,13 +20,15 @@ const rabbitSettings = {
 let messaggi = []
 var queueData;
 
-router.post('',(req,res)=>{
+router.get('',async (req,res)=> {
+    //CONTROLLA SE IL DESTINATARIO E' REGISTRATO
+    let profileTo= await Profile.findOne({mail: req.query.to});
 
     connetti()
     async function connetti() {
         
         queueData = {
-            nome:[req.user.mail, req.body.mail].sort().join()
+            nome:[req.user.mail, req.query.to].sort().join()
         }
         await Queue.findOne({nome: queueData.nome})
         .then(async (result) => {
@@ -49,9 +52,9 @@ router.post('',(req,res)=>{
             await channel.consume(queueData.nome, msg =>( console.log('ricevuto'),
                 messaggi.push(msg.content.toString())
             ))
-            console.log(messaggi)
-
-            res.render('./chat', {msg: messaggi, user: req.user})
+            console.log(messaggi);
+            console.log(req.query);
+            res.render('./chat', {msg: messaggi, user: req.user,profileTo: profileTo});
 
         }catch(err){
             console.error(`Error -> ${err}`);
@@ -63,7 +66,7 @@ router.post('',(req,res)=>{
 router.post('/invia', function (req, res, next) {
     connect();
     async function connect(){
-        console.log(queueData.nome);
+        console.log("NOME QUEUEDATA: \n\n" + queueData.nome);
 
         try{
             const channelPromise = amqp.connect(rabbitSettings).then(conn => conn.createChannel());
@@ -73,17 +76,13 @@ router.post('/invia', function (req, res, next) {
                   channel: channelPromise,
                   write: toQueue(queueData.nome)
                 });
-                myQueueStream.write(req.body.message);
+                myQueueStream.write(req.user.mail + ": " + req.body.message +'\n');
             });
         }catch(err){
             console.error(`Error -> ${err}`);
         }
     }
-    if (messaggi.length == 0){
-        res.render('./chat', {msg: req.body.message + '\n',user: req.user});
-    }else{
-        res.render('./chat', {msg: messaggi +','+req.body.message,user: req.user});
-    }
+    res.redirect('/chat?to=' +  queueData.nome.replace(req.user.mail,'').replace(',',''));
 });
 
 

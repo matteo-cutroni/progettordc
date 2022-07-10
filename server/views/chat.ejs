@@ -4,97 +4,90 @@
   
     <title>Jobify - Chat</title>
     <%- include('./components/meta') %>
+    <link rel="stylesheet" href="css/chat.css">
 </head>
 <body>  
   <section>
       <div class="container-landing">
 
-        <div class="caption d-flex justify-content-center">
+        <div class="transparentback caption d-flex justify-content-center" style="box-shadow: none;">
             <% include('../public/js/my') %>
             <%- include('./components/header') %>
 
             <div class="main-landing d-flex  flex-column-reverse flex-lg-row col-12 justify-content-center align-items-center py-lg-5">
               <div class="container align-items-center">
-                  <div class="main-body">
-                  
-                        <div class="row gutters-sm">
-                          <div class="transparentback col-md-4 mb-3">
-                            <div class="card transparentback" style="border:0;">
-                              <div class="card-body transparentback">
-                                <div class="d-flex flex-column align-items-center text-center transparentback ">
-                                  <img src="<%=withoutLast5(user.picture)%>s240-c" alt="Foto profilo" class="rounded-circle" width="150">
-                                  <div class="mt-3">
-                                    
-                                    <h4 style="color:white"><%=capitalize(user.name)%> <%=capitalize(user.surname)%></h4>
-                                    <p class="text-secondary mb-1"><%=user.mail%></p>
-                                    <!--
-                                      
-                                      <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                                      <button class="btn btn-primary">Follow</button>
+                <div class="main-body">
+                  <div class="container-fluid h-100">
+                    <div class="row justify-content-center h-100">
 
-                                      <button class="btn btn-outline-primary">Message</button>
-                                    -->
-                                  </div>
-                                </div>
+                      <div class="col-md-8 col-xl-6 chat">
+                        <div class="card">
+                          <div class="card-header msg_head">
+
+                            <div class="d-flex bd-highlight">
+
+                              <div class="img_cont">
+                                <img src="<%=profileTo.picture%>" class="rounded-circle user_img">
                               </div>
+
+                              <div class="user_info text-capitalize">
+                                <span><%=profileTo.name%> <%=profileTo.surname%></span>
+                              </div>
+
                             </div>
                             
                           </div>
-                          <div class="col-md-8 d-flex flex-column justify-content-center">
-                            <div class="card mb-3 transparentback neuromorph">
-                              <div id="profileInfo" class="card-body">
-                                <div class="row">
-                                  <div class="col-sm-9 text-white text-capitalize">
-                                    <%=user.name%> <%=user.surname%><br>
-                                    Azienda: 
-                                    <%=user.azienda%>
+
+                          <div class="card-body msg_card_body">
+                            <%msg.forEach( (singleMsg) =>{ %>
+
+                              <%if (singleMsg.startsWith(profileTo.mail)){%>
+                                <div class="d-flex justify-content-start mb-4">
+                                  <div class="img_cont_msg">
+                                    <img src="<%=profileTo.picture%>" class="rounded-circle user_img_msg">
+                                  </div>
+                                  <div class="msg_cotainer">
+                                    <%=singleMsg.replace(profileTo.mail + ':','')%><br>
                                   </div>
                                 </div>
-                                <hr>
-                                <div class="row">
-                                  <div class="col-sm-12">
-                                    Messaggi:
-                                    <%=msg%>
+
+                              <%}else if (singleMsg.startsWith(user.mail)){%>
+                                <div class="d-flex justify-content-end mb-4">
+                                  <div class="msg_cotainer_send">
+                                    <%=singleMsg.replace(user.mail + ':','')%><br>
+                                  </div>
+                                  <div class="img_cont_msg">
+                                    <img src="<%=user.picture%>" class="rounded-circle user_img_msg">
                                   </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <form method="post" action="/chat/invia" class="inline">
-                                            <input type="text" name="message">
-                                            <button type="submit" class="btn neurobtn" >Invia</button>
-                                        </form>
-                                    </div>
-                                </div>
-                              </div>
+                            <%}%>
+                            <% });%>
+                          </div>
+
+                          <div class="card-footer">
+                            <div class="input-group d-flex">
+                              <form method="post" action="/chat/invia" class="d-flex col-12">
+                                <input type="text" class="form-control type_msg" name="message">
+                                <button type="submit" class="btn neurobtn" ><span><i class="fas fa-location-arrow"></i></span></button>
+                              </form>
                             </div>
                           </div>
+
                         </div>
-              
                       </div>
-                  </div>
-            </div>
 
-            <div class="footer-landing d-flex flex-col gap-5 justify-content-evenly  justify-content-md-start">
-              <div class="media">
-                <h2 style="color: #fde672;text-decoration: underline;">Matteo Papa</h2>
-                  <div class="social">
-                    <div><a href=""><i class="fa fa-envelope"></i></a></div>
-                    <div><a href=""><i class="fab fa-github"></i></a></div>
+                    </div>
                   </div>
-              </div>
-              <div class="media">
-                <h2 style="color: #fde672;text-decoration: underline;">Matteo Cutroni</h2>
-                  <div class="social">
-                    <div><a href=""><i class="fa fa-envelope"></i></a></div>
-                    <div><a href=""><i class="fab fa-github"></i></a></div>
-                  </div>
+
+
+                </div>
               </div>
             </div>
-
         </div>
-
+              
       </div>
   </section>    
   <script src="js/jquery.js"></script>
 </body>
 </html>
+

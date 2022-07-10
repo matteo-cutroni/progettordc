@@ -38,10 +38,9 @@
                                     <% mailRicevente = chat.nome.replace(user.mail,'').replace(',','') %>
                                     <h3 class="md-heading text-white pt-4"><%= mailRicevente%></h3>
                                     <div class="d-flex gap-3">
-                                        <form method="post" action="/chat" class="inline">
-                                            <input type="hidden" name="mail" value="<%=mailRicevente%>">
-                                            <button type="submit" class="contactbtn btn">Scrivi <i style="font-size: large;" class="fa-solid fa-message"></i></button>
-                                        </form>
+                                            <a href="/chat?to=<%=mailRicevente%>">
+                                                <button type="submit" class="contactbtn btn">Scrivi <i style="font-size: large;" class="fa-solid fa-message"></i></button>
+                                            </a>
                                     </div>
                                 </div>
                             </div>
