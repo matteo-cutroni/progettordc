@@ -5,7 +5,8 @@
     "main": "server.js",
     "scripts": {
         "dev": "nodemon -L server.js",
-        "start": "nodemon server.js"
+        "start": "nodemon server.js",
+        "test": "mocha"
     },
     "keywords": [],
     "author": "",
@@ -14,6 +15,7 @@
         "amqplib": "^0.10.0",
         "amqplib-stream": "^0.0.3",
         "body-parser": "^1.20.0",
+
         "connect-mongo": "^4.6.0",
         "cookie-session": "^2.0.0",
         "dotenv": "^16.0.1",
@@ -30,6 +32,7 @@
         "stream": "^0.0.2"
     },
     "devDependencies": {
+        "chai": "^4.3.6",
         "mocha": "^10.0.0",
         "nodemon": "^2.0.16"
     },
