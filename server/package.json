@@ -1,36 +1,43 @@
 {
-  "name": "learning-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "dev": "nodemon -L server.js",
-    "start": "nodemon server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "amqplib": "^0.10.0",
-    "amqplib-stream": "^0.0.3",
-    "body-parser": "^1.20.0",
-    "connect-mongo": "^4.6.0",
-    "cookie-session": "^2.0.0",
-    "dotenv": "^16.0.1",
-    "ejs": "^3.1.8",
-    "express": "^4.18.1",
-    "express-fileupload": "^1.4.0",
-    "express-session": "^1.17.3",
-    "googleapis": "^103.0.0",
-    "mongodb": "^4.7.0",
-    "mongoose": "^6.3.4",
-    "moongoose": "^0.0.1",
-    "multer": "^1.4.5-lts.1",
-    "passport": "^0.6.0",
-    "passport-google-oauth2": "^0.2.0",
-    "stream": "^0.0.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.16"
-  }
+    "name": "learning-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "dev": "nodemon -L server.js",
+        "start": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "amqplib": "^0.10.0",
+        "amqplib-stream": "^0.0.3",
+        "body-parser": "^1.20.0",
+        "connect-mongo": "^4.6.0",
+        "cookie-session": "^2.0.0",
+        "dotenv": "^16.0.1",
+        "ejs": "^3.1.8",
+        "express": "^4.18.1",
+        "express-fileupload": "^1.4.0",
+        "express-session": "^1.17.3",
+        "googleapis": "^103.0.0",
+        "mongodb": "^4.7.0",
+        "mongoose": "^6.3.4",
+        "multer": "^1.4.5-lts.1",
+        "passport": "^0.6.0",
+        "passport-google-oauth2": "^0.2.0",
+        "stream": "^0.0.2"
+    },
+    "devDependencies": {
+        "mocha": "^10.0.0",
+        "nodemon": "^2.0.16"
+    },
+    "apidoc": {
+        "name": "Jobify API Documentation",
+        "version": "0.1.0",
+        "description": "Lista API di Jobify",
+        "title": "Jobify API",
+        "url": "https://localhost:8083/apidoc"
+    }
 }

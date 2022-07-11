@@ -1,12 +1,17 @@
 const amqp = require('amqplib');
 var express = require('express');
+<<<<<<< HEAD
 const {createWriteStream, toQueue} = require('amqplib-stream');
 const { google } = require('googleapis');
+=======
+const { createWriteStream, toQueue } = require('amqplib-stream');
+>>>>>>> refs/remotes/origin/master
 
-const router=express.Router();
+const router = express.Router();
 router.use(express.static(__dirname + '/../public/'));
 
 const Queue = require("../models/queue");
+const Profile = require("../models/profile");
 
 const rabbitSettings = {
     protocol: 'amqp',
@@ -19,6 +24,7 @@ const rabbitSettings = {
 let messaggi = []
 var queueData;
 
+<<<<<<< HEAD
 //GOOGLEAPIs
 const GOOGLE_CLIENT_ID= process.env['GOOGLE_CLIENT_ID'];
 const GOOGLE_CLIENT_SECRET= process.env['GOOGLE_CLIENT_SECRET'];
@@ -64,72 +70,79 @@ router.post('/event', (req,res)=>{
     res.render('./chat', {msg: messaggi, user: req.user})
 });
 
-router.post('',(req,res)=>{
+=======
+router.get('', async(req, res) => {
+    //CONTROLLA SE IL DESTINATARIO E' REGISTRATO
+    let profileTo = await Profile.findOne({ mail: req.query.to });
+>>>>>>> refs/remotes/origin/master
 
     connetti()
     async function connetti() {
-        
-        queueData = {
-            nome:[req.user.mail, req.body.mail].sort().join()
-        }
-        await Queue.findOne({nome: queueData.nome})
-        .then(async (result) => {
-            if (!result) {
-            result = await Queue.create(queueData);
-            console.log("\nNuova Queue nel database\n");
-            console.log("\nRisultato: " + result);
+
+        if (profileTo && profileTo.length != 0) {
+            queueData = {
+                nome: [req.user.mail, req.query.to].sort().join()
             }
-            else{
-            console.log("\nQueue già presente nel database\n");
-            } 
-        })
-        .catch((err) => {
-            console.error(err.message)
-        });
-        try{
-            const conn = await amqp.connect(rabbitSettings);
-            const channel = await conn.createChannel();
-            
-            await channel.assertQueue(queueData.nome);
-            await channel.consume(queueData.nome, msg =>( console.log('ricevuto'),
-                messaggi.push(msg.content.toString())
-            ))
-            console.log(messaggi)
+            await Queue.findOne({ nome: queueData.nome })
+                .then(async(result) => {
+                    if (!result) {
+                        result = await Queue.create(queueData);
+                        console.log("\nNuova Queue nel database\n");
+                        console.log("\nRisultato: " + result);
+                    } else {
+                        console.log("\nQueue già presente nel database\n");
+                    }
+                })
+                .catch((err) => {
+                    console.error(err.message)
+                });
+            try {
+                const conn = await amqp.connect(rabbitSettings);
+                const channel = await conn.createChannel();
 
-            res.render('./chat', {msg: messaggi, user: req.user})
+                await channel.assertQueue(queueData.nome);
+                await channel.consume(queueData.nome, msg => (console.log('ricevuto'),
+                    messaggi.push(msg.content.toString())
+                ))
+                console.log(messaggi);
+                console.log(req.query);
+                res.render('./chat', { msg: messaggi, user: req.user, profileTo: profileTo });
 
-        }catch(err){
-            console.error(`Error -> ${err}`);
+            } catch (err) {
+                console.error(`Error -> ${err}`);
+            }
+        } else {
+            res.redirect('/allChats');
         }
     }
+<<<<<<< HEAD
+=======
+>>>>>>> refs/remotes/origin/master
 });
 
 
-router.post('/invia', function (req, res, next) {
-    connect();
-    async function connect(){
-        console.log(queueData.nome);
+router.post('/invia', function(req, res, next) {
+    if (req.body.message != '') {
+        connect();
+        async function connect() {
+            console.log("NOME QUEUEDATA: \n\n" + queueData.nome);
 
-        try{
-            const channelPromise = amqp.connect(rabbitSettings).then(conn => conn.createChannel());
-            
-            channelPromise.then(() => {
-                const myQueueStream = createWriteStream({
-                  channel: channelPromise,
-                  write: toQueue(queueData.nome)
+            try {
+                const channelPromise = amqp.connect(rabbitSettings).then(conn => conn.createChannel());
+
+                channelPromise.then(() => {
+                    const myQueueStream = createWriteStream({
+                        channel: channelPromise,
+                        write: toQueue(queueData.nome)
+                    });
+                    myQueueStream.write(req.user.mail + ": " + req.body.message + '\n');
                 });
-                myQueueStream.write(req.body.message);
-            });
-        }catch(err){
-            console.error(`Error -> ${err}`);
+            } catch (err) {
+                console.error(`Error -> ${err}`);
+            }
         }
     }
-    
-    if (messaggi.length == 0){
-        res.render('./chat', {msg: req.body.message ,user: req.user});
-    }else{
-        res.render('./chat', {msg: messaggi +','+req.body.message,user: req.user});
-    }
+    res.redirect('/chat?to=' + queueData.nome.replace(req.user.mail, '').replace(',', ''));
 });
 
 
