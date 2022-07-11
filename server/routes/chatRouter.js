@@ -1,7 +1,7 @@
 const amqp = require('amqplib');
 var express = require('express');
 const {createWriteStream, toQueue} = require('amqplib-stream');
-const mongoose = require("mongoose");
+const { google } = require('googleapis');
 
 const router=express.Router();
 router.use(express.static(__dirname + '/../public/'));
@@ -18,6 +18,51 @@ const rabbitSettings = {
 };
 let messaggi = []
 var queueData;
+
+//GOOGLEAPIs
+const GOOGLE_CLIENT_ID= process.env['GOOGLE_CLIENT_ID'];
+const GOOGLE_CLIENT_SECRET= process.env['GOOGLE_CLIENT_SECRET'];
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+const REFRESH_TOKEN=process.env['REFRESH_TOKEN'];
+
+const oauth2Client = new google.auth.OAuth2(
+    GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET,
+    REDIRECT_URI
+);
+  
+oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
+const calendar = google.calendar({version:'v3', auth:oauth2Client});
+
+router.post('/event', (req,res)=>{
+    const event = {
+        summary: req.body.titolo,
+        location: req.body.luogo,
+        description: req.body.descrizione,
+        start: {
+            dateTime: new Date(req.body.startTime),
+            timeZone: req.body.timezone
+
+
+        },
+        end: {
+            dateTime: new Date(req.body.endTime),
+            timeZone: req.body.timezone
+        }
+    }
+    console.log(new Date(req.body.startTime))
+    console.log(req.body.timezone)
+    calendar.events.insert({
+        auth: oauth2Client,
+        calendarId: 'primary',
+        resource:event
+        }, err => {
+        if(err) console.error("errore creazione evento: ",err)
+        return console.log("evento creato nel calendario")
+    })
+    res.render('./chat', {msg: messaggi, user: req.user})
+});
 
 router.post('',(req,res)=>{
 
@@ -79,8 +124,9 @@ router.post('/invia', function (req, res, next) {
             console.error(`Error -> ${err}`);
         }
     }
+    
     if (messaggi.length == 0){
-        res.render('./chat', {msg: req.body.message + '\n',user: req.user});
+        res.render('./chat', {msg: req.body.message ,user: req.user});
     }else{
         res.render('./chat', {msg: messaggi +','+req.body.message,user: req.user});
     }

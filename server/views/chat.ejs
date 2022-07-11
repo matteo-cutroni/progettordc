@@ -27,13 +27,6 @@
                                     
                                     <h4 style="color:white"><%=capitalize(user.name)%> <%=capitalize(user.surname)%></h4>
                                     <p class="text-secondary mb-1"><%=user.mail%></p>
-                                    <!--
-                                      
-                                      <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                                      <button class="btn btn-primary">Follow</button>
-
-                                      <button class="btn btn-outline-primary">Message</button>
-                                    -->
                                   </div>
                                 </div>
                               </div>
@@ -65,6 +58,65 @@
                                         </form>
                                     </div>
                                 </div>
+                              </div>
+                              
+                            </div>
+                            
+                            <div class="card mb-3 transparentback neuromorph">
+                              <div class="card-body">
+                                  <div class="row">
+                                      <div class="d-flex flex-row align-items-center">
+                                          <div class="caption-post">
+                                              <strong class="text-dark">Proponi meeting</strong>
+                                              <div class="d-flex gap-3 mt-3">
+                                                  <form method="post" action="/chat/event" class="inline">
+                                                    <input type="hidden" name="timezone" value="<%=Intl.DateTimeFormat().resolvedOptions().timeZone %>">
+                                                    <div class="row">
+                                                      <div class="col-sm-3">
+                                                      <h6 class="mb-0">Inizio: </h6>
+                                                      </div>
+                                                      <div class="col-sm-9 text-white text-capitalize">
+                                                          <input type="datetime-local" name="startTime">
+                                                      </div>
+                                                    </div>
+                                                    <div class="row">
+                                                      <div class="col-sm-3">
+                                                      <h6 class="mb-0">Fine:</h6>
+                                                      </div>
+                                                      <div class="col-sm-9 text-white text-capitalize">
+                                                          <input type="datetime-local" name="endTime">
+                                                      </div>
+                                                    </div>
+                                                    <div class="row">
+                                                      <div class="col-sm-3">
+                                                      <h6 class="mb-0">Titolo:</h6>
+                                                      </div>
+                                                      <div class="col-sm-9 text-white text-capitalize">
+                                                          <input type="text" name="titolo">
+                                                      </div>
+                                                    </div>
+                                                    <div class="row">
+                                                      <div class="col-sm-3">
+                                                      <h6 class="mb-0">Descrizione:</h6>
+                                                      </div>
+                                                      <div class="col-sm-9 text-white text-capitalize">
+                                                          <textarea name="descrizione" cols="30" rows="5"></textarea>
+                                                      </div>
+                                                    </div>
+                                                    <div class="row">
+                                                      <div class="col-sm-3">
+                                                      <h6 class="mb-0">Luogo:</h6>
+                                                      </div>
+                                                      <div class="col-sm-9 text-white text-capitalize">
+                                                          <input type="text" name="luogo">
+                                                      </div>
+                                                    </div>
+                                                      <button type="submit" class="contactbtn btn mt-3">Proponi <i style="font-size: large;" class="fa-solid fa-message"></i></button>
+                                                  </form>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
                               </div>
                             </div>
                           </div>
