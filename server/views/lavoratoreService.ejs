@@ -1,72 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  
+
     <title>Jobify - Annunci</title>
     <%- include('./components/meta') %>
 </head>
-<body>  
-<section>
-    <div class="container-landing">
 
-      <div class="caption d-flex justify-content-center">
-        <% include('../public/js/my') %>
-        <%- include('./components/header') %>
+<body>
+    <section>
+        <div class="container-landing">
 
-        <div class="main-landing d-flex flex-column-reverse flex-lg-row justify-content-center align-items-center py-2">
-            <div class="content">
-                <div class="py-0">
-                    <h1 class="text-center py-0"> 
-                        <a href="/">
-                        <span id="website-title" class="glow py-0 text-center">Trova lavoro !</span>
-                        </a>
-                    </h1>
-                </div>
-                <div class="d-flex justify-content-center py-4">
-                    <img src="img/workers.png" style="width: 30%;">
-                </div>
-                <p class="py-3 text-center" style="font-size: 20px;">Cerca tra gli annunci il lavoro che fa per te e contatta il datore !</p>
-            </div>
-        </div>
+            <div class="caption d-flex justify-content-center">
+                <% include('../public/js/my') %>
+                    <%- include('./components/header') %>
 
-      <% annunci.forEach(function(annuncio){%>
-        <div class="caption-post d-flex justify-content-center col-12">
-            <div class="col-md-12 col-lg-12 d-flex justify-content-center">
-                <div class="singlearticle col-md-12 col-lg-12 d-flex justify-content-center">
-                    <article class="post vt-post">
-                        <div class="row">
-                            <div class="d-flex flex-row align-items-center">
-                                <div class="post-type post-img d-flex flex-column align-items-start px-0">
-                                    <a href="#"><img src="<%= withoutLast5(annuncio.picture)%>s240-c" class="img-responsive rounded-circle" style="width: 70%;" alt="image post"></a>
-                                    <br>
-                                    <h4 class=" text-white text-decoration-underline pt-4"><%=annuncio.azienda%></h4>
-                                </div>
-                                <div class="caption-post">
-                                    <strong class="text-dark"><%=annuncio.date.toDateString()%></strong>
-                                    <h3 class="md-heading text-white pt-4">Lavoro Proposto: <%=annuncio.lavoro%></h3>
-                                    <h6 class="text-white">Requisiti:</h6>
-                                    <p><%=annuncio.requisiti%></p>
-                                    <div class="d-flex gap-3">
-                                        <a href="/profile" class="proposebtn btn">Proponiti <i style="font-size: large;" class="fa-solid fa-hand-point-up"></i></a>
-                                        <a href="/chat?to=<%=annuncio.mail%>">
-                                            <button type="submit" class="contactbtn btn">Contatta <i style="font-size: large;" class="fa-solid fa-message"></i></button>
+                        <div class="main-landing d-flex flex-column-reverse flex-lg-row justify-content-center align-items-center py-2">
+                            <div class="content">
+                                <div class="py-0">
+                                    <h1 class="text-center py-0">
+                                        <a href="/">
+                                            <span id="website-title" class="glow py-0 text-center">Trova lavoro !</span>
                                         </a>
+                                    </h1>
+                                </div>
+                                <div class="d-flex justify-content-center py-4">
+                                    <img src="img/workers.png" style="width: 30%;">
+                                </div>
+                                <p class="py-3 text-center" style="font-size: 20px;">Cerca tra gli annunci il lavoro che fa per te e contatta il datore !</p>
+                            </div>
+                        </div>
+
+                        <% annunci.forEach(function(annuncio){%>
+                            <div class="caption-post d-flex justify-content-center col-12">
+                                <div class="col-md-12 col-lg-12 d-flex justify-content-center">
+                                    <div class="singlearticle col-md-12 col-lg-12 d-flex justify-content-center">
+                                        <article class="post vt-post">
+                                            <div class="row">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div class="post-type post-img d-flex flex-column align-items-start px-0">
+                                                        <a href="/profileViewer?view=<%=annuncio.mail%>" style="padding-left: 0px; margin-right: 80px; border-radius: 50%;">
+                                                            <img src="<%= withoutLast5(annuncio.picture)%>s240-c" class="img-responsive rounded-circle" style="width: 100%;" alt="image post">
+                                                        </a>
+                                                        <br>
+                                                        <h4 class=" text-white text-decoration-underline pt-4">
+                                                            <%=annuncio.azienda%>
+                                                        </h4>
+                                                    </div>
+                                                    <div class="caption-post">
+                                                        <strong class="text-dark"><%=annuncio.date.toDateString()%></strong>
+                                                        <h3 class="md-heading text-white pt-4">Lavoro Proposto:
+                                                            <%=annuncio.lavoro%>
+                                                        </h3>
+                                                        <h6 class="text-white">Requisiti:</h6>
+                                                        <p>
+                                                            <%=annuncio.requisiti%>
+                                                        </p>
+                                                        <div class="d-flex gap-3">
+                                                            <a href="/profile" class="proposebtn btn">Proponiti <i style="font-size: large;" class="fa-solid fa-hand-point-up"></i></a>
+                                                            <a href="/chat?to=<%=annuncio.mail%>">
+                                                                <button type="submit" class="contactbtn btn">Contatta <i style="font-size: large;" class="fa-solid fa-message"></i></button>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                </div>
+                            <%});%>
+
             </div>
-        </div>
-    <%});%>
+    </section>
 
-    </div>
-</section>
 
-      
-<script src="js/jquery.js"></script>
+    <script src="js/jquery.js"></script>
 
 
 </body>
+
 </html>

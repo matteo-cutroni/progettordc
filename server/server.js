@@ -6,6 +6,7 @@ const session = require('express-session');
 
 const servicesRouter = require('./routes/servicesRouter');
 const profileRouter = require('./routes/profileRouter');
+const profileViewerRouter = require('./routes/profileViewerRouter');
 const chatRouter = require('./routes/chatRouter');
 const allChatsRouter = require('./routes/allChatsRouter');
 const apiRouter = require('./routes/apiRouter');
@@ -51,6 +52,7 @@ app.engine('html', require('ejs').renderFile);
 //ROUTES
 app.use('/services', servicesRouter);
 app.use('/profile', profileRouter);
+app.use('/profileViewer', profileViewerRouter);
 app.use('/chat', chatRouter);
 app.use('/allChats', allChatsRouter);
 app.use('/api', apiRouter);
