@@ -48,10 +48,9 @@
                                     <p><%=annuncio.requisiti%></p>
                                     <div class="d-flex gap-3">
                                         <a href="/profile" class="proposebtn btn">Proponiti <i style="font-size: large;" class="fa-solid fa-hand-point-up"></i></a>
-                                        <form method="post" action="/chat" class="inline">
-                                            <input type="hidden" name="mail" value="<%=annuncio.mail%>">
+                                        <a href="/chat?to=<%=annuncio.mail%>">
                                             <button type="submit" class="contactbtn btn">Contatta <i style="font-size: large;" class="fa-solid fa-message"></i></button>
-                                        </form>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

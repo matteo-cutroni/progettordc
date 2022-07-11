@@ -64,22 +64,24 @@ router.get('',async (req,res)=> {
 
 
 router.post('/invia', function (req, res, next) {
-    connect();
-    async function connect(){
-        console.log("NOME QUEUEDATA: \n\n" + queueData.nome);
+    if (req.body.message!=''){
+        connect();
+        async function connect(){
+            console.log("NOME QUEUEDATA: \n\n" + queueData.nome);
 
-        try{
-            const channelPromise = amqp.connect(rabbitSettings).then(conn => conn.createChannel());
-            
-            channelPromise.then(() => {
-                const myQueueStream = createWriteStream({
-                  channel: channelPromise,
-                  write: toQueue(queueData.nome)
+            try{
+                const channelPromise = amqp.connect(rabbitSettings).then(conn => conn.createChannel());
+                
+                channelPromise.then(() => {
+                    const myQueueStream = createWriteStream({
+                    channel: channelPromise,
+                    write: toQueue(queueData.nome)
+                    });
+                    myQueueStream.write(req.user.mail + ": " + req.body.message +'\n');
                 });
-                myQueueStream.write(req.user.mail + ": " + req.body.message +'\n');
-            });
-        }catch(err){
-            console.error(`Error -> ${err}`);
+            }catch(err){
+                console.error(`Error -> ${err}`);
+            }
         }
     }
     res.redirect('/chat?to=' +  queueData.nome.replace(req.user.mail,'').replace(',',''));
