@@ -1,17 +1,15 @@
 const amqp = require('amqplib');
 var express = require('express');
-<<<<<<< HEAD
 const {createWriteStream, toQueue} = require('amqplib-stream');
 const { google } = require('googleapis');
-=======
-const { createWriteStream, toQueue } = require('amqplib-stream');
->>>>>>> refs/remotes/origin/master
+
 
 const router = express.Router();
 router.use(express.static(__dirname + '/../public/'));
 
 const Queue = require("../models/queue");
 const Profile = require("../models/profile");
+const { request } = require('express');
 
 const rabbitSettings = {
     protocol: 'amqp',
@@ -24,7 +22,7 @@ const rabbitSettings = {
 let messaggi = []
 var queueData;
 
-<<<<<<< HEAD
+
 //GOOGLEAPIs
 const GOOGLE_CLIENT_ID= process.env['GOOGLE_CLIENT_ID'];
 const GOOGLE_CLIENT_SECRET= process.env['GOOGLE_CLIENT_SECRET'];
@@ -67,14 +65,13 @@ router.post('/event', (req,res)=>{
         if(err) console.error("errore creazione evento: ",err)
         return console.log("evento creato nel calendario")
     })
-    res.render('./chat', {msg: messaggi, user: req.user})
+    res.redirect('/chat?to=' + queueData.nome.replace(req.user.mail, '').replace(',', ''));
 });
 
-=======
 router.get('', async(req, res) => {
     //CONTROLLA SE IL DESTINATARIO E' REGISTRATO
     let profileTo = await Profile.findOne({ mail: req.query.to });
->>>>>>> refs/remotes/origin/master
+
 
     connetti()
     async function connetti() {
@@ -115,9 +112,6 @@ router.get('', async(req, res) => {
             res.redirect('/allChats');
         }
     }
-<<<<<<< HEAD
-=======
->>>>>>> refs/remotes/origin/master
 });
 
 

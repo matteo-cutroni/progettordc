@@ -16,9 +16,6 @@
 
             <div class="main-landing d-flex  flex-column-reverse flex-lg-row col-12 justify-content-center align-items-center py-lg-5">
               <div class="container align-items-center">
-<<<<<<< HEAD
-
-=======
                 <div class="main-body">
                   <div class="container-fluid h-100">
                     <div class="row justify-content-center h-100">
@@ -31,7 +28,6 @@
 
                               <div class="img_cont">
                                 <img src="<%=profileTo.picture%>" class="rounded-circle user_img">
->>>>>>> refs/remotes/origin/master
                               </div>
 
                               <div class="user_info text-capitalize">
@@ -74,93 +70,76 @@
                                 <input type="text" class="form-control type_msg" name="message" required>
                                 <button type="submit" class="btn neurobtn" ><span><i class="fas fa-location-arrow"></i></span></button>
                               </form>
-<<<<<<< HEAD
-                                <div class="row">
-                                    <div class="col">
-                                        <form method="post" action="/chat/invia" class="inline">
-                                            <input type="text" name="message">
-                                            <button type="submit" class="btn neurobtn" >Invia</button>
-                                        </form>
-                                    </div>
-                                </div>
-                              </div>
-                              
-                            </div>
-                            
-                            <div class="card mb-3 transparentback neuromorph">
-                              <div class="card-body">
-                                  <div class="row">
-                                      <div class="d-flex flex-row align-items-center">
-                                          <div class="caption-post">
-                                              <strong class="text-dark">Proponi meeting</strong>
-                                              <div class="d-flex gap-3 mt-3">
-                                                  <form method="post" action="/chat/event" class="inline">
-                                                    <input type="hidden" name="timezone" value="<%=Intl.DateTimeFormat().resolvedOptions().timeZone %>">
-                                                    <div class="row">
-                                                      <div class="col-sm-3">
-                                                      <h6 class="mb-0">Inizio: </h6>
-                                                      </div>
-                                                      <div class="col-sm-9 text-white text-capitalize">
-                                                          <input type="datetime-local" name="startTime">
-                                                      </div>
-                                                    </div>
-                                                    <div class="row">
-                                                      <div class="col-sm-3">
-                                                      <h6 class="mb-0">Fine:</h6>
-                                                      </div>
-                                                      <div class="col-sm-9 text-white text-capitalize">
-                                                          <input type="datetime-local" name="endTime">
-                                                      </div>
-                                                    </div>
-                                                    <div class="row">
-                                                      <div class="col-sm-3">
-                                                      <h6 class="mb-0">Titolo:</h6>
-                                                      </div>
-                                                      <div class="col-sm-9 text-white text-capitalize">
-                                                          <input type="text" name="titolo">
-                                                      </div>
-                                                    </div>
-                                                    <div class="row">
-                                                      <div class="col-sm-3">
-                                                      <h6 class="mb-0">Descrizione:</h6>
-                                                      </div>
-                                                      <div class="col-sm-9 text-white text-capitalize">
-                                                          <textarea name="descrizione" cols="30" rows="5"></textarea>
-                                                      </div>
-                                                    </div>
-                                                    <div class="row">
-                                                      <div class="col-sm-3">
-                                                      <h6 class="mb-0">Luogo:</h6>
-                                                      </div>
-                                                      <div class="col-sm-9 text-white text-capitalize">
-                                                          <input type="text" name="luogo">
-                                                      </div>
-                                                    </div>
-                                                      <button type="submit" class="contactbtn btn mt-3">Proponi <i style="font-size: large;" class="fa-solid fa-message"></i></button>
-                                                  </form>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-=======
-
->>>>>>> refs/remotes/origin/master
                             </div>
                           </div>
-
                         </div>
                       </div>
-
+                      <div class="col-md-8 col-xl-6">
+                        <div class="card">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="d-flex flex-row align-items-center text-white">
+                                <div class="caption-post">
+                                  <strong>Proponi meeting</strong>
+                                  <div class="d-flex gap-3 mt-3">
+                                    <form method="post" action="/chat/event" class="inline">
+                                      <input type="hidden" name="timezone" value="<%=Intl.DateTimeFormat().resolvedOptions().timeZone %>">
+                                      <input type="hidden" name="profileTo" value="<%=profileTo%>">
+                                      <div class="row">
+                                        <div class="col-sm-3">
+                                        <h6 class="mb-0">Inizio: </h6>
+                                        </div>
+                                        <div class="col-sm-9 text-white text-capitalize">
+                                            <input type="datetime-local" name="startTime">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-sm-3">
+                                        <h6 class="mb-0">Fine:</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-white text-capitalize">
+                                            <input type="datetime-local" name="endTime">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-sm-3">
+                                        <h6 class="mb-0">Titolo:</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-white text-capitalize">
+                                            <input type="text" name="titolo">
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-sm-3">
+                                        <h6 class="mb-0">Descrizione:</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-white text-capitalize">
+                                            <textarea name="descrizione" cols="30" rows="5"></textarea>
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-sm-3">
+                                        <h6 class="mb-0">Luogo:</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-white text-capitalize">
+                                            <input type="text" name="luogo">
+                                        </div>
+                                      </div>
+                                        <button type="submit" class="contactbtn btn mt-3">Proponi <i style="font-size: large;" class="fa-solid fa-message"></i></button>
+                                    </form>                                     
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-
                 </div>
               </div>
             </div>
-        </div>
-              
+        </div>   
       </div>
   </section>    
   <script src="js/jquery.js"></script>
