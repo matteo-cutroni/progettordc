@@ -1,42 +1,45 @@
-const mongoose= require('mongoose');
+const mongoose = require('mongoose');
 
-const profileSchema= new mongoose.Schema({
-    googleId:{
+const profileSchema = new mongoose.Schema({
+    googleId: {
         type: String,
         required: true,
         unique: true,
     },
-    mail:{
+    mail: {
         type: String,
-        required:true
+        required: true
     },
-    name:{
+    name: {
         type: String,
-        required:true
+        required: true
     },
-    surname:{
+    surname: {
         type: String,
-        required:true
+        required: true
     },
-    bornOn:{
+    bornOn: {
         type: Date,
         default: Date.now
     },
-    ruolo:{
-        type:String
+    ruolo: {
+        type: String
     },
-    azienda:{
-        type:String
+    azienda: {
+        type: String
     },
-    curriculumId:{
-        type:String
+    curriculumId: {
+        type: String
     },
-    curriculumLink:{
-        type:String
+    curriculumLink: {
+        type: String
     },
-    picture:{
+    picture: {
+        type: String
+    },
+    accessToken: {
         type: String
     }
 });
 
-module.exports= mongoose.model('profile',profileSchema);
+module.exports = mongoose.model('profile', profileSchema);

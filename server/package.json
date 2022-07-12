@@ -15,7 +15,6 @@
         "amqplib": "^0.10.0",
         "amqplib-stream": "^0.0.3",
         "body-parser": "^1.20.0",
-
         "connect-mongo": "^4.6.0",
         "cookie-session": "^2.0.0",
         "dotenv": "^16.0.1",
