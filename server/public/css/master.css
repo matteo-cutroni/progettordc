@@ -3,35 +3,32 @@
     src: url('../font/coffee-extra.ttf');
 }
 
-.loading{
+.loading {
     display: flex;
     position: absolute;
-    left:0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(0, 0, 0,0.8);
+    background-color: rgb(0, 0, 0, 0.8);
     z-index: 1;
     display: none;
 }
 
-.fileUploaded{
+.fileUploaded {
     display: none;
 }
 
-.navbar-landing-header a{
-    color:white;
+.navbar-landing-header a {
+    color: white;
 }
 
-.navbar-landing-header .logo
-{
+.navbar-landing-header .logo {
     color: #fff;
     font-size: 23px;
     position: relative;
 }
 
-
-.navbar-landing-header .logo:before
-{
+.navbar-landing-header .logo:before {
     content: "";
     position: absolute;
     width: 45px;
@@ -39,25 +36,21 @@
     border-radius: 12px;
     top: -15%;
     left: -40%;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
-     -3px -3px 4px rgba(255, 255, 255, 0.18);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), -3px -3px 4px rgba(255, 255, 255, 0.18);
 }
 
-.navbar-landing-header .logo-curriculum:before
-{
+.navbar-landing-header .logo-curriculum:before {
     content: "";
     position: absolute;
     width: 40px;
     aspect-ratio: 1;
     border-radius: 12px;
-    top: -23%;
+    top: -13%;
     left: -68%;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
-     -3px -3px 4px rgba(255, 255, 255, 0.18);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), -3px -3px 4px rgba(255, 255, 255, 0.18);
 }
 
-.navbar-landing-header .download-icon:before
-{
+.navbar-landing-header .download-icon:before {
     content: "";
     position: absolute;
     width: 40px;
@@ -65,53 +58,48 @@
     border-radius: 12px;
     top: -20%;
     left: -40%;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
-     -3px -3px 4px rgba(255, 255, 255, 0.18);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), -3px -3px 4px rgba(255, 255, 255, 0.18);
 }
 
-.navbar-landing-header .logomail,.logo-curriculum,.download-icon
-{
+.navbar-landing-header .logomail,
+.logo-curriculum,
+.download-icon {
     color: #fff;
     font-size: 23px;
     position: relative;
     cursor: pointer;
 }
 
-.navbar-landing-header .logomail:before
-{
+.navbar-landing-header .logomail:before {
     content: "";
     position: absolute;
     width: 45px;
     aspect-ratio: 1;
     border-radius: 12px;
-    top: -15%;
+    top: -20%;
     left: -46%;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
-     -3px -3px 4px rgba(255, 255, 255, 0.18);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), -3px -3px 4px rgba(255, 255, 255, 0.18);
 }
 
-.navbar-landing-header .logomail:hover:before,.logo-curriculum:hover:before,.download-icon:hover:before
-{
-    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
-                inset -3px -3px 4px rgba(255, 255, 255, 0.18);
+.navbar-landing-header .logomail:hover:before,
+.logo-curriculum:hover:before,
+.download-icon:hover:before {
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2), inset -3px -3px 4px rgba(255, 255, 255, 0.18);
 }
 
-.navbar-landing-header .logo:hover:before
-{
-
-    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2),
-                inset -3px -3px 4px rgba(255, 255, 255, 0.18);
+.navbar-landing-header .logo:hover:before {
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2), inset -3px -3px 4px rgba(255, 255, 255, 0.18);
 }
 
-.magicline{
+.magicline {
     position: relative;
 }
 
-.magicline::after{
+.magicline::after {
     position: absolute;
-    top:30px;
-    left:0;
-    content:"";
+    top: 30px;
+    left: 0;
+    content: "";
     width: 100%;
     height: 1px;
     background: white;
@@ -120,106 +108,93 @@
     transition: transform 0.2s ease-in;
 }
 
-.magicline:hover:after{
+.magicline:hover:after {
     transform: scaleX(1);
     transform-origin: left;
 }
 
-.navlinks a{
-    color:rgb(238, 238, 238);
+.navlinks a {
+    color: rgb(238, 238, 238);
     text-decoration: none;
     font-family: coffee-extra;
     font-size: 20px;
     font-weight: 100;
-    font-family:'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     transform: scale(1);
     transition: all 0.1s ease-in;
     position: relative;
 }
 
-
-.navlinks a:hover{
-    color:rgb(0, 1, 85);
+.navlinks a:hover {
+    color: rgb(0, 1, 85);
     transform: scale(1.05);
 }
 
-.navlogin{
-    margin-left:auto;
+.navlogin {
+    margin-left: auto;
 }
 
-.navlogin .btn{
+.navlogin .btn {
     font-family: 'Indie Flower', cursive;
-    font-size:27px;
+    font-size: 27px;
     font-weight: 100;
-
     border-radius: 8px;
-    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
-           -3px -3px 3px rgba(255, 255, 255, 0.089);
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.205), -3px -3px 3px rgba(255, 255, 255, 0.089);
 }
 
-.navlogin .btn:hover{
+.navlogin .btn:hover {
     border-radius: 8px;
-    box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.205),
-            -1px -1px 3px rgba(255, 255, 255, 0.568),
-            inset 2px 2px 3px rgba(0, 0, 0, 0.205),
-           inset -3px -3px 3px rgba(255, 255, 255, 0.089);
+    box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.205), -1px -1px 3px rgba(255, 255, 255, 0.568), inset 2px 2px 3px rgba(0, 0, 0, 0.205), inset -3px -3px 3px rgba(255, 255, 255, 0.089);
 }
 
-
-.navlogin .loginbtn{
-    background-color: rgb(124, 229, 255,0.3);
+.navlogin .loginbtn {
+    background-color: rgb(124, 229, 255, 0.3);
     color: #333;
 }
 
-.navlogin .signupbtn{
+.navlogin .signupbtn {
     background-color: #fde672e6;
     color: #333;
 }
 
-.proposebtn{
+.proposebtn {
     font-family: 'Indie Flower', cursive;
-    font-size:27px;
+    font-size: 27px;
     font-weight: 100;
     background-color: rgb(103, 255, 126) !important;
     border-radius: 8px;
-    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
-           -3px -3px 3px rgba(255, 255, 255, 0.089);
-    
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.205), -3px -3px 3px rgba(255, 255, 255, 0.089);
     color: #333;
 }
 
-.deletebtn{
+.deletebtn {
     font-family: 'Indie Flower', cursive;
-    font-size:27px;
+    font-size: 27px;
     font-weight: 100;
     background-color: rgb(255, 103, 103) !important;
     border-radius: 8px;
-    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
-           -3px -3px 3px rgba(255, 255, 255, 0.089);
-    
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.205), -3px -3px 3px rgba(255, 255, 255, 0.089);
     color: #333;
 }
 
-.contactbtn{
+.contactbtn {
     font-family: 'Indie Flower', cursive;
-    font-size:27px;
+    font-size: 27px;
     font-weight: 100;
-
     border-radius: 8px;
-    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
-           -3px -3px 3px rgba(255, 255, 255, 0.089);
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.205), -3px -3px 3px rgba(255, 255, 255, 0.089);
     background-color: rgb(221, 255, 0) !important;
     color: #333;
 }
 
-.deletebtn:hover,.proposebtn:hover,.contactbtn:hover{
+.deletebtn:hover,
+.proposebtn:hover,
+.contactbtn:hover {
     border-radius: 8px;
-    box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.205),
-            -1px -1px 3px rgba(255, 255, 255, 0.568),
-            inset 2px 2px 3px rgba(0, 0, 0, 0.205),
-           inset -3px -3px 3px rgba(255, 255, 255, 0.089);
+    box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.205), -1px -1px 3px rgba(255, 255, 255, 0.568), inset 2px 2px 3px rgba(0, 0, 0, 0.205), inset -3px -3px 3px rgba(255, 255, 255, 0.089);
 }
-.content #website-title{
+
+.content #website-title {
     font-family: coffee-extra;
     font-size: 80px;
     font-weight: 100;
@@ -231,94 +206,83 @@
     font-size: 80px;
     color: #fff;
     text-align: center;
-    
     animation: glow 0.4s ease-in-out infinite alternate;
-  }
-  
-  @keyframes glow {
+}
+
+@keyframes glow {
     from {
         text-shadow: 0 0 5px #fff;
     }
-    
     to {
         text-shadow: 0 0 5px #fff, 0 0 10px #fde672e6;
     }
-  }
+}
 
-.content{
+.content {
     padding-right: 100px;
 }
 
-
-
-.main-landing .content p{
+.main-landing .content p {
     font-size: medium;
 }
 
-.main-landing .image{
+.main-landing .image {
     flex: 0 1 auto;
     align-self: stretch;
 }
 
-.main-landing .image img{
+.main-landing .image img {
     margin-left: 0;
     margin-right: 0;
     width: 150%;
-    min-width:350px;
-    max-width:450px;
-    padding:30px;
+    min-width: 350px;
+    max-width: 450px;
+    padding: 30px;
 }
 
-.caption{
-    padding:20px;
+.caption {
+    padding: 20px;
 }
 
-.transparentback{
+.transparentback {
     background: transparent;
 }
 
-.neuromorph{
-    border:0;
-    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
-           -3px -3px 3px rgba(255, 255, 255, 0.089);
+.neuromorph {
+    border: 0;
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.205), -3px -3px 3px rgba(255, 255, 255, 0.089);
 }
 
-.neurobtn{
+.neurobtn {
     background-color: rgba(255, 255, 255, 0.4);
-
-    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
-           -3px -3px 3px rgba(255, 255, 255, 0.089);
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.205), -3px -3px 3px rgba(255, 255, 255, 0.089);
 }
 
-.neurobtn:hover{
+.neurobtn:hover {
     background-color: rgba(255, 255, 255, 0.4);
-    box-shadow:5px 5px 3px rgba(0, 0, 0, 0.205),
-           -3px -3px 3px rgba(255, 255, 255, 0.089),
-           inset 3px 3px 3px rgba(0, 0, 0, 0.205),
-           inset -3px -3px 3px rgba(255, 255, 255, 0.089);
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.205), -3px -3px 3px rgba(255, 255, 255, 0.089), inset 3px 3px 3px rgba(0, 0, 0, 0.205), inset -3px -3px 3px rgba(255, 255, 255, 0.089);
 }
 
-.form-wrapper{
+.form-wrapper {
     width: 70%;
 }
 
-.title-section-wrapper a{
+.title-section-wrapper a {
     color: #fde672;
     font-size: 18px;
     text-decoration: none;
-    font-family:'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 26px 0px;
 }
 
-.singlearticle *:not(.btn){
+.singlearticle *:not(.btn) {
     background: transparent !important;
 }
 
-.caption-post{
-    width:100%;
+.caption-post {
+    width: 100%;
 }
 
-.post{
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
-     -3px -3px 10px rgba(255, 255, 255, 0.18) !important;
+.post {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), -3px -3px 10px rgba(255, 255, 255, 0.18) !important;
 }

@@ -1,22 +1,22 @@
 <div class="navbar-landing pt-3 pb-5">
+    <div class="navbar-landing-header">
+        <a class="logo" href="/"><i class="fa-solid fa-house"></i></a>
+    </div>
+    <div class="navlinks d-flex flex-col gap-3 px-2 d-none d-lg-flex">
+        <a href="/services" class="magicline">Annunci</a>
+        <a href="/aboutus" class="magicline">About Us</a>
+    </div>
+    <div class="navlogin d-flex flex-col gap-3 px-2">
+        <% if (user){ %>
             <div class="navbar-landing-header">
-              <a class="logo" href="/"><i class="fa-solid fa-house"></i></a>
+                <a href="/allChats" class="logomail"><i class="fa-solid fa-message"></i></a>
             </div>
-            <div class="navlinks d-flex flex-col gap-3 px-2 d-none d-lg-flex">
-              <a href="/services" class="magicline">Annunci</a>
-              <a href="/aboutus" class="magicline">About Us</a>
-            </div>
-            <div class="navlogin d-flex flex-col gap-3 px-2">
-              <% if (user){ %>
-                <div class="navbar-landing-header">
-                  <a href="/allChats" class="logomail"><i class="fa-solid fa-envelope"></i></a>
-                </div>
-                <a href="/profile" class="loginbtn btn">Profilo  <i style="font-size: large;" class="fa-solid fa-user"></i></a>
-                <a href="/auth/logout" class="signupbtn btn">Log Out  <i style="font-size: large;" class="fa-solid fa-arrow-right-from-bracket"></i></a>
-                
-              <% }else{ %>
-                
+            <a href="/profile" class="loginbtn btn">Profilo  <i style="font-size: large;" class="fa-solid fa-user"></i></a>
+            <a href="/auth/logout" class="signupbtn btn">Log Out  <i style="font-size: large;" class="fa-solid fa-arrow-right-from-bracket"></i></a>
+
+            <% }else{ %>
+
                 <a href="/auth/google" class="loginbtn btn">Login with <i style="color:#333" class="fa-brands fa-google"></i>oogle</a>
-              <% }%>
-            </div>
+                <% }%>
+    </div>
 </div>

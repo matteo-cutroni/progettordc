@@ -1,131 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  
+
     <title>Jobify - Home</title>
     <%- include('./components/meta') %>
 </head>
-<body>  
-  <section>
-      <div class="container-landing">
 
-        <div class="caption d-flex justify-content-center">
-            <% include('../public/js/my') %>
-            <%- include('./components/header') %>
+<body>
+    <section>
+        <div class="container-landing">
 
-            <div class="main-landing d-flex  flex-column-reverse flex-lg-row col-12 justify-content-center align-items-center py-lg-5">
-              <div class="container align-items-center">
-                  <div class="main-body">
-                  
-                        <div class="row gutters-sm">
-                          <div class="transparentback col-md-4 mb-3">
-                            <div class="card transparentback" style="border:0;">
-                              <div class="card-body transparentback">
-                                <div class="d-flex flex-column align-items-center text-center transparentback ">
-                                  <img src="<%=withoutLast5(user.picture)%>s240-c" alt="Foto profilo (se non viene visualizzata è perchè il certificato del sito non è stato verificato)" class="rounded-circle" width="150">
-                                  <div class="mt-3">
-                                    
-                                    <h4 style="color:white"><%=capitalize(user.name)%> <%=capitalize(user.surname)%></h4>
-                                    <p class="text-secondary mb-1"><%=user.mail%></p>
-                                    <!--
+            <div class="caption d-flex justify-content-center">
+                <% include('../public/js/my') %>
+                    <%- include('./components/header') %>
+
+                        <div class="main-landing d-flex  flex-column-reverse flex-lg-row col-12 justify-content-center align-items-center py-lg-5">
+                            <div class="container align-items-center">
+                                <div class="main-body">
+
+                                    <div class="row gutters-sm">
+                                        <div class="transparentback col-md-4 mb-3">
+                                            <div class="card transparentback" style="border:0;">
+                                                <div class="card-body transparentback">
+                                                    <div class="d-flex flex-column align-items-center text-center transparentback ">
+                                                        <img src="<%=withoutLast5(user.picture)%>s240-c" alt="Foto profilo (se non viene visualizzata è perchè il certificato del sito non è stato verificato)" class="rounded-circle" width="150">
+                                                        <div class="mt-3">
+
+                                                            <h4 style="color:white">
+                                                                <%=capitalize(user.name)%>
+                                                                    <%=capitalize(user.surname)%>
+                                                            </h4>
+                                                            <p class="text-secondary mb-1">
+                                                                <%=user.mail%>
+                                                            </p>
+                                                            <!--
                                       
                                       <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                                       <button class="btn btn-primary">Follow</button>
 
                                       <button class="btn btn-outline-primary">Message</button>
                                     -->
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            
-                          </div>
-                          <div class="col-md-8 d-flex flex-column justify-content-center">
-                            <div class="card mb-3 transparentback neuromorph">
-                              <div id="profileInfo" class="card-body">
-                                <div class="row">
-                                  <div class="col-sm-3">
-                                    <h6 class="mb-0">Nome</h6>
-                                    <input type="text" id="nome" value="<%=user.name%> <%=user.surname%>" class="d-none">
-                                  </div>
-                                  <div class="col-sm-9 text-white text-capitalize">
-                                      <%=user.name%> <%=user.surname%>
-                                  </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                  <div class="col-sm-3">
-                                    <h6 class="mb-0">Email</h6>
-                                  </div>
-                                  <div class="col-sm-9 text-white">
-                                      <%=user.mail%>
-                                  </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                  <div class="col-sm-3">
-                                    <h6 class="mb-0">Ruolo</h6>
-                                  </div>
-                                  <div class="col-sm-9 text-white text-capitalize">
-                                    <%=user.ruolo%>
-                                  </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                  <div class="col-sm-3">
-                                    <h6 class="mb-0">Azienda</h6>
-                                  </div>
-                                  <div class="col-sm-9 text-white text-capitalize">
-                                    <%=user.azienda%>
-                                  </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                  <div class="col-sm-3 d-flex align-items-center">
-                                    <h6 class="mb-0">Curriculum</h6>
-                                  </div>
-                                  <div class="col-sm-9 text-capitalize">
-                                    <div class="px-1 navbar-landing-header">
-                                      <a class="logo-curriculum" href="<%= user.curriculumLink%>" target="_blank"><i class="fa-solid fa-sheet-plastic"></i></a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                  <div class="col-sm-12">
-                                    <a class="btn neurobtn" href="/profile/edit">Modifica</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-              
-                      </div>
-                  </div>
-            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-            <div class="footer-landing d-flex flex-col gap-5 justify-content-evenly  justify-content-md-start">
-              <div class="media">
-                <h2 style="color: #fde672;text-decoration: underline;">Matteo Papa</h2>
-                  <div class="social">
-                    <div><a href=""><i class="fa fa-envelope"></i></a></div>
-                    <div><a href=""><i class="fab fa-github"></i></a></div>
-                  </div>
-              </div>
-              <div class="media">
-                <h2 style="color: #fde672;text-decoration: underline;">Matteo Cutroni</h2>
-                  <div class="social">
-                    <div><a href=""><i class="fa fa-envelope"></i></a></div>
-                    <div><a href=""><i class="fab fa-github"></i></a></div>
-                  </div>
-              </div>
+                                        </div>
+                                        <div class="col-md-8 d-flex flex-column justify-content-center">
+                                            <div class="card mb-3 transparentback neuromorph">
+                                                <div id="profileInfo" class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Nome</h6>
+                                                            <input type="text" id="nome" value="<%=user.name%> <%=user.surname%>" class="d-none">
+                                                        </div>
+                                                        <div class="col-sm-9 text-white text-capitalize">
+                                                            <%=user.name%>
+                                                                <%=user.surname%>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Email</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-white">
+                                                            <%=user.mail%>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Ruolo</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-white text-capitalize">
+                                                            <%=user.ruolo%>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <h6 class="mb-0">Azienda</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-white text-capitalize">
+                                                            <%=user.azienda%>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-sm-3 d-flex align-items-center">
+                                                            <h6 class="mb-0">Curriculum</h6>
+                                                        </div>
+                                                        <div class="col-sm-9 text-capitalize">
+                                                            <div class="px-1 navbar-landing-header">
+                                                                <a class="logo-curriculum" <%if (user.curriculumLink){%>
+                                                                    href="<%=user.curriculumLink%>" <%}%> 
+                                                                  target="_blank"><i class="fa-solid fa-sheet-plastic"></i></a>
+
+                                                            </div>
+                                                            <%if (!user.curriculumLink){%>
+                                                                <span class="px-3 py-3">Nessun curriculum caricato</span>
+                                                                <%}%>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <a class="btn neurobtn" href="/profile/edit">Modifica</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="footer-landing d-flex flex-col gap-5 justify-content-evenly  justify-content-md-start">
+                            <div class="media">
+                                <h2 style="color: #fde672;text-decoration: underline;">Matteo Papa</h2>
+                                <div class="social">
+                                    <div><a href="mailto:papa.1896945@studenti.uniroma1.it"><i class="fa fa-envelope"></i></a></div>
+                                    <div><a href="https://github.com/MatteoPapa" target="_blank"><i class="fab fa-github"></i></a></div>
+                                </div>
+                            </div>
+                            <div class="media">
+                                <h2 style="color: #fde672;text-decoration: underline;">Matteo Cutroni</h2>
+                                <div class="social">
+                                    <div><a href="mailto:cutroni.1918336@studenti.uniroma1.it"><i class="fa fa-envelope"></i></a></div>
+                                    <div><a href="https://github.com/matteo-cutroni" target="_blank"><i class="fab fa-github"></i></a></div>
+                                </div>
+                            </div>
+                        </div>
+
             </div>
 
         </div>
-
-      </div>
-  </section>    
-  <script src="js/jquery.js"></script>
+    </section>
+    <script src="js/jquery.js"></script>
 </body>
+
 </html>

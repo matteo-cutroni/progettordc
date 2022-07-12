@@ -94,8 +94,13 @@
                                                         </div>
                                                         <div class="col-sm-9 text-capitalize">
                                                             <div class="px-1 navbar-landing-header">
-                                                                <a class="logo-curriculum" href="<%= user.curriculumLink%>" target="_blank"><i class="fa-solid fa-sheet-plastic"></i></a>
+                                                                <a class="logo-curriculum" <%if (user.curriculumLink){%>
+                                                                href="<%=user.curriculumLink%>" <%}%> 
+                                                                target="_blank"><i class="fa-solid fa-sheet-plastic"></i></a>
                                                             </div>
+                                                            <%if (!user.curriculumLink){%>
+                                                                <span class="px-3 py-3">Nessun curriculum caricato</span>
+                                                                <%}%>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -111,15 +116,15 @@
                             <div class="media">
                                 <h2 style="color: #fde672;text-decoration: underline;">Matteo Papa</h2>
                                 <div class="social">
-                                    <div><a href=""><i class="fa fa-envelope"></i></a></div>
-                                    <div><a href=""><i class="fab fa-github"></i></a></div>
+                                    <div><a href="mailto:papa.1896945@studenti.uniroma1.it"><i class="fa fa-envelope"></i></a></div>
+                                    <div><a href="https://github.com/MatteoPapa" target="_blank"><i class="fab fa-github"></i></a></div>
                                 </div>
                             </div>
                             <div class="media">
                                 <h2 style="color: #fde672;text-decoration: underline;">Matteo Cutroni</h2>
                                 <div class="social">
-                                    <div><a href=""><i class="fa fa-envelope"></i></a></div>
-                                    <div><a href=""><i class="fab fa-github"></i></a></div>
+                                    <div><a href="mailto:cutroni.1918336@studenti.uniroma1.it"><i class="fa fa-envelope"></i></a></div>
+                                    <div><a href="https://github.com/matteo-cutroni" target="_blank"><i class="fab fa-github"></i></a></div>
                                 </div>
                             </div>
                         </div>

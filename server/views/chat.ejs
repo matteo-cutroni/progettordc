@@ -1,148 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  
+
     <title>Jobify - Chat</title>
     <%- include('./components/meta') %>
-    <link rel="stylesheet" href="css/chat.css">
+        <link rel="stylesheet" href="css/chat.css">
 </head>
-<body>  
-  <section>
-      <div class="container-landing">
 
-        <div class="transparentback caption d-flex justify-content-center" style="box-shadow: none;">
-            <% include('../public/js/my') %>
-            <%- include('./components/header') %>
+<body>
+    <section>
+        <div class="container-landing">
 
-            <div class="main-landing d-flex  flex-column-reverse flex-lg-row col-12 justify-content-center align-items-center py-lg-5">
-              <div class="container align-items-center">
-                <div class="main-body">
-                  <div class="container-fluid h-100">
-                    <div class="row justify-content-center h-100">
+            <div class="transparentback caption d-flex justify-content-center" style="box-shadow: none;">
+                <% include('../public/js/my') %>
+                    <%- include('./components/header') %>
 
-                      <div class="col-md-8 col-xl-6 chat">
-                        <div class="card">
-                          <div class="card-header msg_head">
+                        <div class="main-landing d-flex  flex-column-reverse flex-lg-row col-12 justify-content-center align-items-center py-lg-5">
+                            <div class="container align-items-center">
+                                <div class="main-body">
+                                    <div class="container-fluid h-100">
+                                        <div class="row justify-content-center h-100">
 
-                            <div class="d-flex bd-highlight">
+                                            <div class="col-md-8 col-xl-6 chat">
+                                                <div class="card">
+                                                    <div class="card-header msg_head">
 
-                              <div class="img_cont">
-                                <img src="<%=profileTo.picture%>" class="rounded-circle user_img">
-                              </div>
+                                                        <div class="d-flex bd-highlight">
 
-                              <div class="user_info text-capitalize">
-                                <span><%=profileTo.name%> <%=profileTo.surname%></span>
-                              </div>
+                                                            <div class="img_cont">
+                                                                <img src="<%=withoutLast5(profileTo.picture)%>s240-c" class="rounded-circle user_img">
+                                                            </div>
 
-                            </div>
-                            
-                          </div>
+                                                            <div class="user_info text-capitalize">
+                                                                <span><%=profileTo.name%> <%=profileTo.surname%></span>
+                                                            </div>
 
-                          <div class="card-body msg_card_body">
-                            <%msg.forEach( (singleMsg) =>{ %>
+                                                        </div>
 
-                              <%if (singleMsg.startsWith(profileTo.mail)){%>
-                                <div class="d-flex justify-content-start mb-4">
-                                  <div class="img_cont_msg">
-                                    <img src="<%=profileTo.picture%>" class="rounded-circle user_img_msg">
-                                  </div>
-                                  <div class="msg_cotainer">
-                                    <%=singleMsg.replace(profileTo.mail + ':','')%><br>
-                                  </div>
+                                                    </div>
+
+                                                    <div class="card-body msg_card_body">
+                                                        <%msg.forEach( (singleMsg) =>{ %>
+
+                                                            <%if (singleMsg.startsWith(profileTo.mail)){%>
+                                                                <div class="d-flex justify-content-start mb-4">
+                                                                    <div class="img_cont_msg">
+                                                                        <img src="<%=withoutLast5(profileTo.picture)%>s240-c" class="rounded-circle user_img_msg">
+                                                                    </div>
+                                                                    <div class="msg_cotainer">
+                                                                        <%=singleMsg.replace(profileTo.mail + ':','')%><br>
+                                                                    </div>
+                                                                </div>
+
+                                                                <%}else if (singleMsg.startsWith(user.mail)){%>
+                                                                    <div class="d-flex justify-content-end mb-4">
+                                                                        <div class="msg_cotainer_send">
+                                                                            <%=singleMsg.replace(user.mail + ':','')%><br>
+                                                                        </div>
+                                                                        <div class="img_cont_msg">
+                                                                            <img src="<%=withoutLast5(user.picture)%>s240-c" class="rounded-circle user_img_msg">
+                                                                        </div>
+                                                                    </div>
+                                                                    <%}%>
+                                                                        <% });%>
+                                                    </div>
+
+                                                    <div class="card-footer">
+                                                        <div class="input-group d-flex">
+                                                            <form method="post" action="/chat/invia" class="d-flex col-12">
+                                                                <input type="text" class="form-control type_msg" name="message" required>
+                                                                <button type="submit" class="btn neurobtn"><span><i class="fas fa-location-arrow"></i></span></button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>                                                          
+                                            <div class="col-md-8 col-xl-6">
+                                              <div class="card">
+                                                <div class="card-body">
+                                                  <div class="row">
+                                                    <div class="d-flex flex-row align-items-center text-white">
+                                                      <div class="caption-post">
+                                                        <strong>Proponi meeting</strong>
+                                                        <div class="d-flex gap-3 mt-3">
+                                                          <form method="post" action="/chat/event" class="inline">
+                                                            <input type="hidden" name="timezone" value="<%=Intl.DateTimeFormat().resolvedOptions().timeZone %>">
+                                                            <input type="hidden" name="profileTo" value="<%=profileTo%>">
+                                                            <div class="row">
+                                                              <div class="col-sm-3">
+                                                              <h6 class="mb-0">Inizio: </h6>
+                                                              </div>
+                                                              <div class="col-sm-9 text-white text-capitalize">
+                                                                  <input type="datetime-local" name="startTime">
+                                                              </div>
+                                                            </div>
+                                                            <div class="row">
+                                                              <div class="col-sm-3">
+                                                              <h6 class="mb-0">Fine:</h6>
+                                                              </div>
+                                                              <div class="col-sm-9 text-white text-capitalize">
+                                                                  <input type="datetime-local" name="endTime">
+                                                              </div>
+                                                            </div>
+                                                            <div class="row">
+                                                              <div class="col-sm-3">
+                                                              <h6 class="mb-0">Titolo:</h6>
+                                                              </div>
+                                                              <div class="col-sm-9 text-white text-capitalize">
+                                                                  <input type="text" name="titolo">
+                                                              </div>
+                                                            </div>
+                                                            <div class="row">
+                                                              <div class="col-sm-3">
+                                                              <h6 class="mb-0">Descrizione:</h6>
+                                                              </div>
+                                                              <div class="col-sm-9 text-white text-capitalize">
+                                                                  <textarea name="descrizione" cols="30" rows="5"></textarea>
+                                                              </div>
+                                                            </div>
+                                                            <div class="row">
+                                                              <div class="col-sm-3">
+                                                              <h6 class="mb-0">Luogo:</h6>
+                                                              </div>
+                                                              <div class="col-sm-9 text-white text-capitalize">
+                                                                  <input type="text" name="luogo">
+                                                              </div>
+                                                            </div>
+                                                              <button type="submit" class="contactbtn btn mt-3">Proponi <i style="font-size: large;" class="fa-solid fa-message"></i></button>
+                                                          </form>                                     
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
-                              <%}else if (singleMsg.startsWith(user.mail)){%>
-                                <div class="d-flex justify-content-end mb-4">
-                                  <div class="msg_cotainer_send">
-                                    <%=singleMsg.replace(user.mail + ':','')%><br>
-                                  </div>
-                                  <div class="img_cont_msg">
-                                    <img src="<%=user.picture%>" class="rounded-circle user_img_msg">
-                                  </div>
-                                </div>
-                            <%}%>
-                            <% });%>
-                          </div>
-
-                          <div class="card-footer">
-                            <div class="input-group d-flex">
-                              <form method="post" action="/chat/invia" class="d-flex col-12">
-                                <input type="text" class="form-control type_msg" name="message" required>
-                                <button type="submit" class="btn neurobtn" ><span><i class="fas fa-location-arrow"></i></span></button>
-                              </form>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-8 col-xl-6">
-                        <div class="card">
-                          <div class="card-body">
-                            <div class="row">
-                              <div class="d-flex flex-row align-items-center text-white">
-                                <div class="caption-post">
-                                  <strong>Proponi meeting</strong>
-                                  <div class="d-flex gap-3 mt-3">
-                                    <form method="post" action="/chat/event" class="inline">
-                                      <input type="hidden" name="timezone" value="<%=Intl.DateTimeFormat().resolvedOptions().timeZone %>">
-                                      <input type="hidden" name="profileTo" value="<%=profileTo%>">
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                        <h6 class="mb-0">Inizio: </h6>
-                                        </div>
-                                        <div class="col-sm-9 text-white text-capitalize">
-                                            <input type="datetime-local" name="startTime">
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                        <h6 class="mb-0">Fine:</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-white text-capitalize">
-                                            <input type="datetime-local" name="endTime">
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                        <h6 class="mb-0">Titolo:</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-white text-capitalize">
-                                            <input type="text" name="titolo">
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                        <h6 class="mb-0">Descrizione:</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-white text-capitalize">
-                                            <textarea name="descrizione" cols="30" rows="5"></textarea>
-                                        </div>
-                                      </div>
-                                      <div class="row">
-                                        <div class="col-sm-3">
-                                        <h6 class="mb-0">Luogo:</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-white text-capitalize">
-                                            <input type="text" name="luogo">
-                                        </div>
-                                      </div>
-                                        <button type="submit" class="contactbtn btn mt-3">Proponi <i style="font-size: large;" class="fa-solid fa-message"></i></button>
-                                    </form>                                     
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>   
-      </div>
+            </div>   
+    </div>
   </section>    
   <script src="js/jquery.js"></script>
 </body>
 </html>
-
