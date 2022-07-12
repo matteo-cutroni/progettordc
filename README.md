@@ -21,7 +21,7 @@ L'applicazione offre alcuni servizi agli utenti, distinguendo questi ultimi in:
 
 # Step per l'installazione:
 
-1) Accedere al [Google Cloud Console](https://console.cloud.google.com) -> "Api e Servizi" -> "Credenziali" -> "+ Crea Credenziali" -> "ID client OAuth"
+1) Accedere al [Google Cloud Console](https://console.cloud.google.com) -> "Api e Servizi" -> "Credenziali" -> "+ Crea Credenziali" -> "ID client OAuth".
 Inserire come tipo di applicazione Web Application e aggiungere nei Redirect URI:
   
 		http://localhost:8080/google/callback
