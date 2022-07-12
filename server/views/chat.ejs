@@ -29,11 +29,15 @@
                                                         <div class="d-flex bd-highlight">
 
                                                             <div class="img_cont">
-                                                                <img src="<%=withoutLast5(profileTo.picture)%>s240-c" class="rounded-circle user_img">
+                                                                <a href="/profileViewer?view=<%=profileTo.mail%>">
+                                                                    <img src="<%=withoutLast5(profileTo.picture)%>s240-c" class="rounded-circle user_img">
+                                                                </a>
                                                             </div>
 
                                                             <div class="user_info text-capitalize">
-                                                                <span><%=profileTo.name%> <%=profileTo.surname%></span>
+                                                                <a href="/profileViewer?view=<%=profileTo.mail%>" style="text-decoration: none;">
+                                                                    <span><%=profileTo.name%> <%=profileTo.surname%></span>
+                                                                </a>
                                                             </div>
 
                                                         </div>
