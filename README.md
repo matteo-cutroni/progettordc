@@ -29,17 +29,11 @@ Inserire come tipo di applicazione Web Application e aggiungere nei Redirect URI
 		
 Appuntarsi il CLIENT_ID e il CLIENT_SECRET.
 
-2)  Accedere all'[OAuth Playground](https://developers.google.com/oauthplayground/).
-Selezione la Drive API v3 e la Google Calendar API v3 dal menu a sinistra, e cliccando sull'icona delle impostazioni spuntare "Use your own OAuth credentials".
-Inserire successivamente il CLIENT_ID e il CLIENT_SECRET ottenuti nel passaggio 1 negli appositi riquadri.
-Autorizzare le API e appuntarsi il REFRESH TOKEN.
 
-
-3) Aggiungere nella cartella server un file .env con i seguenti campi:
+2) Aggiungere nella cartella server un file .env con i seguenti campi:
 
 		GOOGLE_CLIENT_ID= Il CLIENT_ID appuntato prima
 		GOOGLE_CLIENT_SECRET= Il CLIENT_SECRET appuntato prima
-		REFRESH_TOKEN= Il REFRESH_TOKEN appuntato prima
 
 # Avvio 
 
