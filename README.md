@@ -58,12 +58,15 @@ Testare le API del sito web accedendo alla cartella "server" ed eseguendo:
 
 	npm test	
 
+# Diagramma
+![DiagrammaRdC](https://user-images.githubusercontent.com/105429984/178678680-3667b250-ae24-4fc5-8dd3-fe26e2ef10d7.jpg)
+
 
 # Soddisfacimento dei Requisiti
 
 - Il servizio offre delle API documentate con APIDOC. La documentazione è accessibile da "http://localhost:8080/apidoc";
 - Utilizza la Drive API v3 per salvare il curriculum degli utenti sul loro drive personale, e la Google Calendar API v3 per salvare le date dei colloqui confermati;
-- Il servizio di registrazione e di login è interamente basato su Google OAuth (mediante Passport.js). Inoltre sia Drive che Calendar richiedono l'utilizzo di Google OAuth;
+- Il servizio di registrazione e di login è interamente basato su Google OAuth (mediante Passport.js). Sia Drive che Calendar richiedono l'utilizzo di Google OAuth;
 - Il sistema di messagistica (chat) tra datore e lavoratore è interamente basato sul protocollo AMQP (tramite RabbitMQ);
 - L'applicazione fa uso di Docker per la containerizzazione delle varie parti della Web App e Docker Compose per orchestrarle;
 - Le Github Actions forniscono una procedura CI/CD;
