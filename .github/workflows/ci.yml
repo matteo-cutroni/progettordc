@@ -10,9 +10,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    run:
-      working-directory: ./server
+    
+    defaults:
+      run:
+        working-directory: ./server
 
     strategy:
       matrix:
