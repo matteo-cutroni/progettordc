@@ -26,16 +26,12 @@ var queueData;
 //GOOGLEAPIs
 const GOOGLE_CLIENT_ID= process.env['GOOGLE_CLIENT_ID'];
 const GOOGLE_CLIENT_SECRET= process.env['GOOGLE_CLIENT_SECRET'];
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN=process.env['REFRESH_TOKEN'];
+
 
 const oauth2Client = new google.auth.OAuth2(
     GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET,
-    REDIRECT_URI
 );
-  
-oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 const calendar = google.calendar({version:'v3', auth:oauth2Client});
 
@@ -45,30 +41,33 @@ router.post('/event', (req,res)=>{
         location: req.body.luogo,
         description: req.body.descrizione,
         start: {
-            dateTime: new Date(req.body.startTime),
-            timeZone: req.body.timezone
+            dateTime:new Date(req.body.startTime).toISOString().replace('Z', ''),
+            timeZone: "Europe/Rome"
 
 
         },
         end: {
-            dateTime: new Date(req.body.endTime),
-            timeZone: req.body.timezone
-        }
-    }
-    console.log(new Date(req.body.startTime))
-    console.log(req.body.timezone)
+            dateTime: new Date(req.body.endTime).toISOString().replace('Z', ''),
+            timeZone: "Europe/Rome"
+        },
+        colorId: 8
+    };
+   // console.log(req.body.timezone)
     calendar.events.insert({
         auth: oauth2Client,
         calendarId: 'primary',
         resource:event
         }, err => {
-        if(err) console.error("errore creazione evento: ",err)
+        if(err) return console.error("errore creazione evento: ",err)
         return console.log("evento creato nel calendario")
     })
     res.redirect('/chat?to=' + queueData.nome.replace(req.user.mail, '').replace(',', ''));
 });
 
 router.get('', async(req, res) => {
+    
+    oauth2Client.setCredentials({ access_token: req.user.accessToken, refresh_token: req.user.refreshToken });
+
     //CONTROLLA SE IL DESTINATARIO E' REGISTRATO
     let profileTo = await Profile.findOne({ mail: req.query.to });
 

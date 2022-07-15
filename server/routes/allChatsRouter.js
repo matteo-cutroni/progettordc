@@ -10,7 +10,12 @@ const Queue = require("../models/queue");
 //ATTIVA IL PUBLIC
 router.use(express.static(__dirname + '/../public'));
 
-router.get('',async (req,res)=>{
+function isLoggedIn(req,res,next){
+    req.user ? next():res.redirect('/auth/google'); //UNATHORIZED STATUS
+}
+
+router.get('',isLoggedIn,async (req,res)=>{
+    console.log(req.session);
     const mieQueue = await Queue.find({'nome': {$regex : req.user.mail}})
     res.render('./allChats', {queue:mieQueue, user: req.user})
 })

@@ -2,6 +2,7 @@ const passport=require('passport');
 const GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
 const GOOGLE_CLIENT_ID=process.env['GOOGLE_CLIENT_ID'];
 const GOOGLE_CLIENT_SECRET=process.env['GOOGLE_CLIENT_SECRET'];
+const REDIRECT_URI=process.env['REDIRECT_URI'];
 
 const Profile = require("../models/profile");
 
@@ -12,15 +13,17 @@ passport.use(new GoogleStrategy({
     //CIO' CHE SUCCEDE QUANDO QUALCUNO FA UN LOGIN CORRETTO
     passReqToCallback   : true
   },
-  async function (request, accessToken, refreshToken, profile, done) {
-    
+  async function (req, accessToken, refreshToken, profile, done) {
+
     const userData = {
       googleId: profile.id,
       mail: profile.email,
       name: profile.given_name,
       surname: profile.family_name,
       picture: profile.picture,
-      authType: 'oauth'
+      accessToken: accessToken,
+      refreshToken: refreshToken,
+      authType: 'oauth',
     }
     console.log("\n\nLogged User: \n"+ JSON.stringify((userData),null,4));
     await Profile.findOne({googleId: userData.googleId})
@@ -29,9 +32,10 @@ passport.use(new GoogleStrategy({
           result = await Profile.create(userData);
           console.log("\nNuovi Dati caricati nel database\n");
           console.log("\nRisultato: " + result);
-        }
-        else{
+        } else {
           console.log("\nUtente già registrato nel database\n");
+          //UPDATE accessToken
+          await Profile.findOneAndUpdate({ googleId: userData.googleId }, { $set: { 'accessToken': accessToken, 'refreshToken' : refreshToken } });
         }
         return done(null, result);
       })

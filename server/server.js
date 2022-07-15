@@ -15,12 +15,12 @@ const { default: mongoose } = require('mongoose');
 const MongoStore = require('connect-mongo');
 const INSTANCE = process.env.INSTANCE;
 
+
+
 //REQUIRE DELLA GOOGLE STRATEGY
 require('./auth/auth');
 
-function isLoggedIn(req, res, next) {
-    req.user ? next() : res.redirect('/auth/google'); //UNATHORIZED STATUS
-}
+
 
 const SESSION_OPTIONS = {
     cookie: {
@@ -60,6 +60,10 @@ app.use('/api', apiRouter);
 //MIDDLEWARE
 app.set('view engine', 'ejs');
 
+function isLoggedIn(req, res, next) {
+    req.user ? next() : res.redirect('/auth/google'); //UNATHORIZED STATUS
+}
+
 //GETs
 app.get('/', (req, res) => {
     res.render('./index', { user: req.user });
@@ -77,7 +81,13 @@ app.use(function(req, res, next) {
 
 //AUTENTICAZIONE GOOGLE
 app.get('/auth/google',
-    passport.authenticate('google', { scope: ['email', 'profile'] }) //LO SCOPE SERVE AD OTTENERE DEI DATI
+    passport.authenticate('google', {
+        scope: ['email', 'profile',
+            "https://www.googleapis.com/auth/calendar",
+            "https://www.googleapis.com/auth/drive.file"
+        ],
+        accessType: 'offline'
+    }) //LO SCOPE SERVE AD OTTENERE DEI DATI
 );
 
 //GOOGLE CALLBACK (ALLA FINE DELLA REGISTRAZIONE)
