@@ -37,9 +37,13 @@
                                                 <div class="d-flex flex-row align-items-center">
                                                     <div class="caption-post">
                                                         <strong class="text-dark py-1">Conversazione con</strong>
+
                                                         <span><% mailRicevente = chat.nome.replace(user.mail,'').replace(',','') %></span>
+
                                                         <h3 class="md-heading text-white pt-2">
-                                                            <%= mailRicevente%>
+                                                            <a href="/profileViewer?view=<%=mailRicevente%>" style="color:inherit; text-decoration: none;">
+                                                                <%= mailRicevente%>
+                                                            </a>
                                                         </h3>
                                                         <div class="d-flex gap-3">
                                                             <a href="/chat?to=<%=mailRicevente%>">
