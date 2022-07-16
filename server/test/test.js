@@ -6,7 +6,10 @@ describe("GET /api/datori", () => {
         await fetch("http://localhost:8080/api/datori")
             .then((result) => {
                 expect(result.status).to.equal(200);
-            });
+            })
+            .catch((err) => {
+                console.error(err.message);
+              });
     });
 });
 
@@ -16,6 +19,9 @@ describe("GET /api/lavoratori", () => {
             .then((result) => {
                 expect(result.status).to.equal(200);
             })
+            .catch((err) => {
+                console.error(err.message);
+              });
     });
 });
 
@@ -25,6 +31,9 @@ describe("GET /api/jobs", () => {
             .then((result) => {
                 expect(result.status).to.equal(200);
             })
+            .catch((err) => {
+                console.error(err.message);
+              });
     });
 });
 
@@ -35,6 +44,9 @@ describe("GET /api/job/:datore", () => {
             .then((result) => {
                 expect(result.status).to.equal(404);
             })
+            .catch((err) => {
+                console.error(err.message);
+              });
     });
 
     it("Send Good GET request to http://localhost:8080/api/job/:datore", async() => {
@@ -42,5 +54,8 @@ describe("GET /api/job/:datore", () => {
             .then((result) => {
                 expect(result.status).to.equal(200);
             })
+            .catch((err) => {
+                console.error(err.message);
+              });
     });
 });

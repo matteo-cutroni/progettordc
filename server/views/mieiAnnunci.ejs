@@ -37,9 +37,9 @@
                                     <div class="row">
                                         <div class="d-flex flex-row align-items-center">
                                             <div class="post-type post-img d-flex flex-column align-items-start px-0">
-                                                <a href="#"><img src="<%= withoutLast5(user.picture)%>s240-c" class="img-responsive rounded-circle" style="width: 70%;" alt="image post"></a>
+                                                <img src="<%= withoutLast5(user.picture)%>s240-c" class="rounded-circle" style="width: 70%;" alt="image post">
                                                 <br>
-                                                <h4 class="text-capitalize text-white text-center text-decoration-underline pt-4 px-4"><%=user.name%> <%=user.surname%></h4>
+                                                <h4 class="text-capitalize text-white text-center text-decoration-underline px-4"><%=user.name%> <%=user.surname%></h4>
                                             </div>
                                             <div class="caption-post">
                                                 <strong class="text-dark"><%=annuncio.date.toDateString()%></strong>

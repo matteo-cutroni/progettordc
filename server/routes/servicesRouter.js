@@ -19,7 +19,7 @@ router.get('/', isLoggedIn, async (req,res)=>{
         res.render("./datoreService",{user:req.user});
     }
     else if (req.user.ruolo=="lavoratore"){
-        const mieiAnnunci=await Annuncio.find({});
+        const mieiAnnunci=await Annuncio.find({mail:{$ne: req.user.mail}});
         res.render("./lavoratoreService",{user:req.user,annunci:mieiAnnunci});
     }
     else{
@@ -30,7 +30,7 @@ router.get('/', isLoggedIn, async (req,res)=>{
 
 router.get('/miei-annunci', isLoggedIn, async(req,res)=>{
     if (req.user.ruolo=="datore"){
-        const mieiAnnunci=await Annuncio.find({});
+        const mieiAnnunci=await Annuncio.find({mail:req.user.mail});
         res.render("./mieiAnnunci",{user:req.user, annunci:mieiAnnunci});
     }
     else{
@@ -39,7 +39,7 @@ router.get('/miei-annunci', isLoggedIn, async(req,res)=>{
 });
 
 router.post('/delete',isLoggedIn,async(req,res)=>{
-    const toDelete= await Annuncio.findOne({_id:req.body.id});
+    const toDelete= await Annuncio.findOne({mail:req.user.mail,_id:req.body.id});
     
     if (toDelete.mail==req.user.mail){
         console.log("CANCELLO ANNUNCIO: " + req.body.id);

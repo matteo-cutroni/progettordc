@@ -87,48 +87,48 @@
                                                   <div class="row">
                                                     <div class="d-flex flex-row align-items-center text-white">
                                                       <div class="caption-post">
-                                                        <strong>Aggiungi un meeting al calendario</strong>
-                                                        <div class="d-flex gap-3 mt-3">
+                                                        <h4 class="py-2">Aggiungi un meeting al calendario</h4>
+                                                        <div class="d-flex flex-row gap-3 mt-3 pt-2">
                                                           <form method="post" action="/chat/event" class="inline">
                                                             <input type="hidden" name="profileTo" value="<%=profileTo%>">
-                                                            <div class="row">
-                                                              <div class="col-sm-3">
-                                                              <h6 class="mb-0">Inizio: </h6>
+                                                            <div class="row py-1">
+                                                              <div class="col-sm-4">
+                                                                <h6 class="mb-0">Inizio: </h6>
                                                               </div>
-                                                              <div class="col-sm-9 text-white text-capitalize">
-                                                                  <input type="datetime-local" name="startTime">
-                                                              </div>
-                                                            </div>
-                                                            <div class="row">
-                                                              <div class="col-sm-3">
-                                                              <h6 class="mb-0">Fine:</h6>
-                                                              </div>
-                                                              <div class="col-sm-9 text-white text-capitalize">
-                                                                  <input type="datetime-local" name="endTime">
+                                                              <div class="col-sm-8 text-white text-capitalize">
+                                                                  <input type="datetime-local" class="form-control" name="startTime">
                                                               </div>
                                                             </div>
-                                                            <div class="row">
-                                                              <div class="col-sm-3">
-                                                              <h6 class="mb-0">Titolo:</h6>
+                                                            <div class="row py-1">
+                                                              <div class="col-sm-4">
+                                                                <h6 class="mb-0">Fine:</h6>
                                                               </div>
-                                                              <div class="col-sm-9 text-white text-capitalize">
-                                                                  <input type="text" name="titolo">
+                                                              <div class="col-sm-8 text-white text-capitalize">
+                                                                  <input type="datetime-local" class="form-control" name="endTime">
                                                               </div>
                                                             </div>
-                                                            <div class="row">
-                                                              <div class="col-sm-3">
+                                                            <div class="row py-1">
+                                                              <div class="col-sm-4">
+                                                                <h6 class="mb-0">Titolo:</h6>
+                                                              </div>
+                                                              <div class="col-sm-8 text-white text-capitalize">
+                                                                  <input type="text" placeholder="Aggiungi un titolo..." class="form-control" name="titolo">
+                                                              </div>
+                                                            </div>
+                                                            <div class="row py-1">
+                                                              <div class="col-sm-4">
                                                               <h6 class="mb-0">Descrizione:</h6>
                                                               </div>
-                                                              <div class="col-sm-9 text-white text-capitalize">
-                                                                  <textarea name="descrizione" cols="30" rows="5"></textarea>
+                                                              <div class="col-sm-8 text-white text-capitalize">
+                                                                  <textarea name="descrizione" placeholder="Aggiungi una descrizione..." class="form-control" cols="30" rows="5"></textarea>
                                                               </div>
                                                             </div>
-                                                            <div class="row">
-                                                              <div class="col-sm-3">
+                                                            <div class="row py-1">
+                                                              <div class="col-sm-4">
                                                               <h6 class="mb-0">Luogo:</h6>
                                                               </div>
-                                                              <div class="col-sm-9 text-white text-capitalize">
-                                                                  <input type="text" name="luogo">
+                                                              <div class="col-sm-8 text-white text-capitalize">
+                                                                  <input type="text" class="form-control" placeholder="Aggiungi un luogo..." name="luogo">
                                                               </div>
                                                             </div>
                                                               <button type="submit" class="contactbtn btn mt-3">Aggiungi <i style="font-size: large;" class="fa-solid fa-plus-square"></i></button>
