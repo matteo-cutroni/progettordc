@@ -73,7 +73,7 @@
                                                     <div class="card-footer">
                                                         <div class="input-group d-flex">
                                                             <form method="post" action="/chat/invia" class="d-flex col-12">
-                                                                <input type="text" class="form-control type_msg" name="message" required>
+                                                                <input type="text" class="form-control type_msg" name="message" autocomplete="off" required>
                                                                 <button type="submit" class="btn neurobtn"><span><i class="fas fa-location-arrow"></i></span></button>
                                                             </form>
                                                         </div>
@@ -96,7 +96,7 @@
                                                                 <h6 class="mb-0">Inizio: </h6>
                                                               </div>
                                                               <div class="col-sm-8 text-white text-capitalize">
-                                                                  <input type="datetime-local" class="form-control" name="startTime">
+                                                                  <input type="datetime-local" class="form-control" autocomplete="off" name="startTime" required>
                                                               </div>
                                                             </div>
                                                             <div class="row py-1">
@@ -104,7 +104,7 @@
                                                                 <h6 class="mb-0">Fine:</h6>
                                                               </div>
                                                               <div class="col-sm-8 text-white text-capitalize">
-                                                                  <input type="datetime-local" class="form-control" name="endTime">
+                                                                  <input type="datetime-local" class="form-control" autocomplete="off" name="endTime" required>
                                                               </div>
                                                             </div>
                                                             <div class="row py-1">
@@ -112,7 +112,7 @@
                                                                 <h6 class="mb-0">Titolo:</h6>
                                                               </div>
                                                               <div class="col-sm-8 text-white text-capitalize">
-                                                                  <input type="text" placeholder="Aggiungi un titolo..." class="form-control" name="titolo">
+                                                                  <input type="text" placeholder="Aggiungi un titolo..." class="form-control" autocomplete="off" name="titolo" required>
                                                               </div>
                                                             </div>
                                                             <div class="row py-1">
@@ -120,7 +120,7 @@
                                                               <h6 class="mb-0">Descrizione:</h6>
                                                               </div>
                                                               <div class="col-sm-8 text-white text-capitalize">
-                                                                  <textarea name="descrizione" placeholder="Aggiungi una descrizione..." class="form-control" cols="30" rows="5"></textarea>
+                                                                  <textarea name="descrizione" placeholder="Aggiungi una descrizione..." autocomplete="off" class="form-control" cols="30" rows="5"></textarea>
                                                               </div>
                                                             </div>
                                                             <div class="row py-1">
@@ -128,11 +128,14 @@
                                                               <h6 class="mb-0">Luogo:</h6>
                                                               </div>
                                                               <div class="col-sm-8 text-white text-capitalize">
-                                                                  <input type="text" class="form-control" placeholder="Aggiungi un luogo..." name="luogo">
+                                                                  <input type="text" class="form-control" placeholder="Aggiungi un luogo..." autocomplete="off" name="luogo">
                                                               </div>
                                                             </div>
                                                               <button type="submit" class="contactbtn btn mt-3">Aggiungi <i style="font-size: large;" class="fa-solid fa-plus-square"></i></button>
-                                                          </form>                                     
+                                                              <%if (done){%>
+                                                                <span class="px-3 " style="color:greenyellow; font-size: larger;">Evento aggiunto <i class="fa-solid fa-check"></i></span>
+                                                              <%}%>
+                                                            </form>                                     
                                                         </div>
                                                       </div>
                                                     </div>

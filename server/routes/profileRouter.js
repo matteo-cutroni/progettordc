@@ -57,11 +57,11 @@ const uploadFile = async(fileObject, user, drive) => {
                 name: 'Jobify Curriculum',
                 mimeType: fileObject.mimeType,
             },
-            fields: "id",
             oauth_token: user.accessToken
         });
         console.log("\nCaricato ! Id del file:\n");
         console.log(response.data.id);
+        console.log("ID PASSATO: " + response.data.id);
         return response.data.id;
     } catch (error) {
         console.log(error.message);

@@ -86,7 +86,8 @@ app.get('/auth/google',
             "https://www.googleapis.com/auth/calendar",
             "https://www.googleapis.com/auth/drive.file"
         ],
-        accessType: 'offline'
+        accessType: 'offline',
+        approvalPrompt: 'force' 
     }) //LO SCOPE SERVE AD OTTENERE DEI DATI
 );
 

@@ -13,7 +13,7 @@ passport.use(new GoogleStrategy({
     passReqToCallback: true
   },
   async function (request, accessToken, refreshToken, profile, done) {
-
+    console.log("REFRESH TOKEN: " + refreshToken);
     const userData = {
       googleId: profile.id,
       mail: profile.email,
@@ -34,7 +34,7 @@ passport.use(new GoogleStrategy({
         } else {
           console.log("\nUtente già registrato nel database\n");
           //UPDATE accessToken
-          await Profile.findOneAndUpdate({ googleId: userData.googleId }, { $set: { 'accessToken': accessToken, 'refreshToken' : refreshToken } });
+          await Profile.findOneAndUpdate({ googleId: userData.googleId }, { $set: { 'accessToken': accessToken, 'refreshToken' : refreshToken } }, {new:true, upsert:true});
         }
         return done(null, result);
       })

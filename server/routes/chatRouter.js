@@ -61,7 +61,7 @@ router.post('/event', (req,res)=>{
         if(err) return console.error("errore creazione evento: ",err)
         return console.log("evento creato nel calendario")
     })
-    res.redirect('/chat?to=' + queueData.nome.replace(req.user.mail, '').replace(',', ''));
+    res.redirect('/chat?to=' + queueData.nome.replace(req.user.mail, '').replace(',', '') + "&done=true");
 });
 
 router.get('', async(req, res) => {
@@ -102,7 +102,7 @@ router.get('', async(req, res) => {
                 ))
                 console.log(messaggi);
                 console.log(req.query);
-                res.render('./chat', { msg: messaggi, user: req.user, profileTo: profileTo });
+                res.render('./chat', { msg: messaggi, user: req.user, profileTo: profileTo, done: req.query.done });
 
             } catch (err) {
                 console.error(`Error -> ${err}`);
