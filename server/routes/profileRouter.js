@@ -121,7 +121,7 @@ async function generatePublicUrl(driveFileId, user, drive) {
 
 router.post("/set", upload.any(), async(req, res) => {
 
-    oauth2Client.setCredentials({ access_token: req.user.accessToken });
+    oauth2Client.setCredentials({ access_token: req.user.accessToken, refresh_token: req.user.refreshToken });
 
     const drive = google.drive({
         version: 'v3',
