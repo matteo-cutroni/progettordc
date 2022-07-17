@@ -79,7 +79,7 @@ router.get('/lavoratori', async(req, res) => {
 });
 
 /**
- * @api {get} /job/:datore Richiedi tutti gli annunci di un lavoratore specifico
+ * @api {get} /job/:datore Richiedi tutti gli annunci di uno specifico datore
  * @apiGroup Annunci
  * @apiDescription Restituisce tutti gli annunci lavorativi pubblicati da uno specifico datore su Jobify
  * @apiParam datore GoogleId del datore di lavoro che si intende specificare
